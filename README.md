@@ -20,8 +20,16 @@ You can also run the debugged executable file directly on Raspberry Pi.
 
 # Usage
 
+Functions of [pigpiod C Interface](http://abyz.me.uk/rpi/pigpio/pdif2.html) were implemented except for the following functions.
+- start_thread()
+- stop_thread()
+- event_callback()
+- event_callback_ex()
+- event_callback_cancel()
+- wait_for_event()
+
 When adding Rapidnack.Net/PiGpiodIf.cs to your project, please also copy Rapidnack.Net/TcpConnection.cs.  
-And please refer to Rapidnack.Net/XPiGpiodIf.cs for how to use each methods.
+And please refer to Rapidnack.Net/XPiGpiodIf.cs for how to use each functions.
 
 # Licence
 
