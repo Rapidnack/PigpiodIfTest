@@ -5,6 +5,14 @@ PigpiodIfTest/PigpiodIfTest.sln is a test application for the Rapidnack.Net/PiGp
 
 ![Raspberry Pi and peripherals](http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/IMG_20180916_193830-e1537094490777.jpg)
 
+With Rapidnack.Net/PiGpiodIf.cs you can debug on VisualStudio using Raspberry Pi's GPIO.
+
+![debugging on VisualStudio](http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/VS-debug.png)
+
+You can also run the debugged executable file directly on Raspberry Pi.
+
+![run on raspberry pi](http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/IMG_20180916_211238-e1537100104546.jpg)
+
 # Dependency
 
 - Microsoft Visual Studio Community 2015
