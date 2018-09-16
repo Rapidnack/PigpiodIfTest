@@ -23,6 +23,10 @@ You can also run the debugged executable file directly on Raspberry Pi.
 When adding Rapidnack.Net/PiGpiodIf.cs to your project, please also copy Rapidnack.Net/TcpConnection.cs.  
 And please refer to Rapidnack.Net/XPiGpiodIf.cs for how to use each methods.
 
+# Licence
+
+Like pigpio, this software is released under the Unlicense, see LICENSE.
+
 # Authors
 
 Rapidnack
