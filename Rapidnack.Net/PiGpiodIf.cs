@@ -2691,7 +2691,7 @@ namespace Rapidnack.Net
 			return null;
 		}
 
-	private int recvMax(byte[] buf, int sent)
+		private int recvMax(byte[] buf, int sent)
 		{
 			/*
 			Copy at most bufSize bytes from the receieved message to
