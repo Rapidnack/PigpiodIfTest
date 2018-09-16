@@ -1,7 +1,9 @@
 # PigpiodIfTest
 
 Rapidnack.Net/PiGpiodIf.cs is a rewrite of PIGPIO/pigpiod_if2.c in C#, and Rapidnack.Net/XPiGpiodIf.cs is a rewrite of PIGPIO/x_pigpiod_if2.c in C#.  
-PigpiodIfTest/PigpiodIfTest.sln is a test application for the Rapidnack.Net/PiGpiodIf.cs.
+PigpiodIfTest/PigpiodIfTest.sln is a test application for the Rapidnack.Net/PiGpiodIf.cs.  
+
+![Raspberry Pi and peripherals](http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/IMG_20180916_193830-e1537094490777.jpg)
 
 # Dependency
 
