@@ -37,14 +37,15 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.textBoxLog = new System.Windows.Forms.TextBox();
+			this.buttonCancel = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonTest
 			// 
-			this.buttonTest.Location = new System.Drawing.Point(12, 222);
+			this.buttonTest.Location = new System.Drawing.Point(12, 206);
 			this.buttonTest.Name = "buttonTest";
-			this.buttonTest.Size = new System.Drawing.Size(75, 27);
+			this.buttonTest.Size = new System.Drawing.Size(65, 27);
 			this.buttonTest.TabIndex = 6;
 			this.buttonTest.Text = "Test";
 			this.buttonTest.UseVisualStyleBackColor = true;
@@ -52,9 +53,9 @@
 			// 
 			// buttonOff
 			// 
-			this.buttonOff.Location = new System.Drawing.Point(12, 171);
+			this.buttonOff.Location = new System.Drawing.Point(83, 130);
 			this.buttonOff.Name = "buttonOff";
-			this.buttonOff.Size = new System.Drawing.Size(75, 27);
+			this.buttonOff.Size = new System.Drawing.Size(65, 27);
 			this.buttonOff.TabIndex = 5;
 			this.buttonOff.Text = "Off";
 			this.buttonOff.UseVisualStyleBackColor = true;
@@ -62,9 +63,9 @@
 			// 
 			// buttonOn
 			// 
-			this.buttonOn.Location = new System.Drawing.Point(12, 138);
+			this.buttonOn.Location = new System.Drawing.Point(12, 130);
 			this.buttonOn.Name = "buttonOn";
-			this.buttonOn.Size = new System.Drawing.Size(75, 27);
+			this.buttonOn.Size = new System.Drawing.Size(65, 27);
 			this.buttonOn.TabIndex = 4;
 			this.buttonOn.Text = "On";
 			this.buttonOn.UseVisualStyleBackColor = true;
@@ -74,14 +75,14 @@
 			// 
 			this.textBoxAddress.Location = new System.Drawing.Point(12, 28);
 			this.textBoxAddress.Name = "textBoxAddress";
-			this.textBoxAddress.Size = new System.Drawing.Size(120, 23);
+			this.textBoxAddress.Size = new System.Drawing.Size(136, 23);
 			this.textBoxAddress.TabIndex = 1;
 			// 
 			// buttonClose
 			// 
-			this.buttonClose.Location = new System.Drawing.Point(12, 90);
+			this.buttonClose.Location = new System.Drawing.Point(83, 57);
 			this.buttonClose.Name = "buttonClose";
-			this.buttonClose.Size = new System.Drawing.Size(75, 27);
+			this.buttonClose.Size = new System.Drawing.Size(65, 27);
 			this.buttonClose.TabIndex = 3;
 			this.buttonClose.Text = "Close";
 			this.buttonClose.UseVisualStyleBackColor = true;
@@ -91,7 +92,7 @@
 			// 
 			this.buttonOpen.Location = new System.Drawing.Point(12, 57);
 			this.buttonOpen.Name = "buttonOpen";
-			this.buttonOpen.Size = new System.Drawing.Size(75, 27);
+			this.buttonOpen.Size = new System.Drawing.Size(65, 27);
 			this.buttonOpen.TabIndex = 2;
 			this.buttonOpen.Text = "Open";
 			this.buttonOpen.UseVisualStyleBackColor = true;
@@ -108,6 +109,7 @@
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.buttonCancel);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.buttonOpen);
 			this.panel1.Controls.Add(this.buttonTest);
@@ -118,18 +120,28 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(143, 281);
-			this.panel1.TabIndex = 8;
+			this.panel1.Size = new System.Drawing.Size(160, 281);
+			this.panel1.TabIndex = 0;
 			// 
 			// textBoxLog
 			// 
 			this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxLog.Location = new System.Drawing.Point(143, 0);
+			this.textBoxLog.Location = new System.Drawing.Point(160, 0);
 			this.textBoxLog.Multiline = true;
 			this.textBoxLog.Name = "textBoxLog";
 			this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBoxLog.Size = new System.Drawing.Size(321, 281);
-			this.textBoxLog.TabIndex = 9;
+			this.textBoxLog.Size = new System.Drawing.Size(304, 281);
+			this.textBoxLog.TabIndex = 1;
+			// 
+			// buttonCancel
+			// 
+			this.buttonCancel.Location = new System.Drawing.Point(83, 206);
+			this.buttonCancel.Name = "buttonCancel";
+			this.buttonCancel.Size = new System.Drawing.Size(65, 27);
+			this.buttonCancel.TabIndex = 7;
+			this.buttonCancel.Text = "Cancel";
+			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// MainForm
 			// 
@@ -161,6 +173,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TextBox textBoxLog;
+		private System.Windows.Forms.Button buttonCancel;
 	}
 }
 

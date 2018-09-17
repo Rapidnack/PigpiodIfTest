@@ -38,8 +38,7 @@ namespace PigpiodIfTest
 
 			buttonClose.Enabled = false;
 			buttonOff.Enabled = false;
-
-			//textBoxLog.
+			buttonCancel.Enabled = false;
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)
@@ -61,24 +60,27 @@ namespace PigpiodIfTest
 		private async void buttonOn_Click(object sender, EventArgs e)
 		{
 			buttonOn.Enabled = false;
+			buttonTest.Enabled = false;
 			buttonOff.Enabled = true;
-
-			var callback = pigpiodIf.callback(GPIO, PigpiodIf.EITHER_EDGE, (gpio, level, tick, user) =>
-			{
-				Console.WriteLine("callback: {0}, {1}, {2}, {3}", gpio, level, tick, user);
-				Invoke(new Action(() =>
-				{
-					bool isLow = (level == PigpiodIf.PI_LOW);
-					textBoxAddress.Enabled = isLow;
-					textBoxAddress.BackColor = isLow ? Color.Lime : Color.Aqua;
-				}));
-			});
+			PigpiodIf.Callback callback = null;
 			try
 			{
+				callback = pigpiodIf.callback(GPIO, PigpiodIf.EITHER_EDGE, (gpio, level, tick, user) =>
+				{
+					Console.WriteLine("callback: {0}, {1}, {2}, {3}", gpio, level, tick, user);
+					Invoke(new Action(() =>
+					{
+						bool isLow = (level == PigpiodIf.PI_LOW);
+						textBoxAddress.Enabled = isLow;
+						textBoxAddress.BackColor = isLow ? Color.Lime : Color.Aqua;
+					}));
+				});
+
 				cts = new CancellationTokenSource();
+				var ct = cts.Token;
 				await Task.Run(async () =>
 				{
-					while (cts.Token.IsCancellationRequested == false)
+					while (ct.IsCancellationRequested == false)
 					{
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
 						await Task.Delay(500);
@@ -92,10 +94,11 @@ namespace PigpiodIfTest
 				pigpiodIf.callback_cancel(callback);
 				textBoxAddress.Enabled = true;
 				textBoxAddress.BackColor = SystemColors.Window;
-			}
 
-			buttonOn.Enabled = true;
-			buttonOff.Enabled = false;
+				buttonOn.Enabled = true;
+				buttonTest.Enabled = true;
+				buttonOff.Enabled = false;
+			}
 		}
 
 		private void buttonOff_Click(object sender, EventArgs e)
@@ -105,27 +108,46 @@ namespace PigpiodIfTest
 
 		private async void buttonTest_Click(object sender, EventArgs e)
 		{
+			buttonOn.Enabled = false;
 			buttonTest.Enabled = false;
-
-			await Task.Run(() =>
+			buttonCancel.Enabled = true;
+			try
 			{
-				var xPiGpiodIf = new XPigpiodIf();
-				xPiGpiodIf.t0(pigpiodIf);
-				xPiGpiodIf.t1(pigpiodIf);
-				xPiGpiodIf.t2(pigpiodIf);
-				xPiGpiodIf.t3(pigpiodIf);
-				//xPiGpiodIf.t4(pigpiodIf);
-				xPiGpiodIf.t5(pigpiodIf);
-				xPiGpiodIf.t6(pigpiodIf);
-				xPiGpiodIf.t7(pigpiodIf);
-				xPiGpiodIf.t8(pigpiodIf);
-				xPiGpiodIf.t9(pigpiodIf);
-				//xPiGpiodIf.ta(pigpiodIf);
-				//xPiGpiodIf.tb(pigpiodIf);
-				//xPiGpiodIf.tc(pigpiodIf);
-			});
+				cts = new CancellationTokenSource();
+				var ct = cts.Token;
+				await Task.Run(() =>
+				{
+					var xPiGpiodIf = new XPigpiodIf();
+					xPiGpiodIf.t0(pigpiodIf, ct);
+					xPiGpiodIf.t1(pigpiodIf, ct);
+					xPiGpiodIf.t2(pigpiodIf, ct);
+					xPiGpiodIf.t3(pigpiodIf, ct);
+					//xPiGpiodIf.t4(pigpiodIf, ct);
+					xPiGpiodIf.t5(pigpiodIf, ct);
+					xPiGpiodIf.t6(pigpiodIf, ct);
+					xPiGpiodIf.t7(pigpiodIf, ct);
+					xPiGpiodIf.t8(pigpiodIf, ct);
+					xPiGpiodIf.t9(pigpiodIf, ct);
+					//xPiGpiodIf.ta(pigpiodIf, ct);
+					//xPiGpiodIf.tb(pigpiodIf, ct);
+					//xPiGpiodIf.tc(pigpiodIf, ct);
+				});
+			}
+			catch (Exception ex)
+			{
+				System.Console.WriteLine(ex.Message);
+			}
+			finally
+			{
+				buttonOn.Enabled = true;
+				buttonTest.Enabled = true;
+				buttonCancel.Enabled = false;
+			}
+		}
 
-			buttonTest.Enabled = true;
+		private void buttonCancel_Click(object sender, EventArgs e)
+		{
+			cts.Cancel();
 		}
 	}
 }
