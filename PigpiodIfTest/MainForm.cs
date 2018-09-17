@@ -9,6 +9,7 @@ namespace PigpiodIfTest
 {
 	public partial class MainForm : Form
 	{
+		private LogWriter logWriter;
 		private PigpiodIf pigpiodIf = new PigpiodIf();
 		private CancellationTokenSource cts;
 
@@ -19,8 +20,23 @@ namespace PigpiodIfTest
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+			logWriter = new LogWriter();
+			System.Console.SetOut(logWriter);
+			System.Console.SetError(logWriter);
+			logWriter.TextChanged += (s, evt) =>
+			{
+				Invoke(new Action(() =>
+				{
+					textBoxLog.Text = logWriter.Text;
+					textBoxLog.SelectionStart = textBoxLog.Text.Length;
+					textBoxLog.ScrollToCaret();
+				}));
+			};
+
 			buttonClose.Enabled = false;
 			buttonOff.Enabled = false;
+
+			//textBoxLog.
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)

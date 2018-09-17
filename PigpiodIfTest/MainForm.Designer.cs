@@ -35,11 +35,14 @@
 			this.buttonClose = new System.Windows.Forms.Button();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.textBoxLog = new System.Windows.Forms.TextBox();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonTest
 			// 
-			this.buttonTest.Location = new System.Drawing.Point(199, 69);
+			this.buttonTest.Location = new System.Drawing.Point(12, 222);
 			this.buttonTest.Name = "buttonTest";
 			this.buttonTest.Size = new System.Drawing.Size(75, 27);
 			this.buttonTest.TabIndex = 6;
@@ -49,7 +52,7 @@
 			// 
 			// buttonOff
 			// 
-			this.buttonOff.Location = new System.Drawing.Point(12, 102);
+			this.buttonOff.Location = new System.Drawing.Point(12, 171);
 			this.buttonOff.Name = "buttonOff";
 			this.buttonOff.Size = new System.Drawing.Size(75, 27);
 			this.buttonOff.TabIndex = 5;
@@ -59,7 +62,7 @@
 			// 
 			// buttonOn
 			// 
-			this.buttonOn.Location = new System.Drawing.Point(12, 69);
+			this.buttonOn.Location = new System.Drawing.Point(12, 138);
 			this.buttonOn.Name = "buttonOn";
 			this.buttonOn.Size = new System.Drawing.Size(75, 27);
 			this.buttonOn.TabIndex = 4;
@@ -71,12 +74,12 @@
 			// 
 			this.textBoxAddress.Location = new System.Drawing.Point(12, 28);
 			this.textBoxAddress.Name = "textBoxAddress";
-			this.textBoxAddress.Size = new System.Drawing.Size(100, 23);
+			this.textBoxAddress.Size = new System.Drawing.Size(120, 23);
 			this.textBoxAddress.TabIndex = 1;
 			// 
 			// buttonClose
 			// 
-			this.buttonClose.Location = new System.Drawing.Point(199, 26);
+			this.buttonClose.Location = new System.Drawing.Point(12, 90);
 			this.buttonClose.Name = "buttonClose";
 			this.buttonClose.Size = new System.Drawing.Size(75, 27);
 			this.buttonClose.TabIndex = 3;
@@ -86,7 +89,7 @@
 			// 
 			// buttonOpen
 			// 
-			this.buttonOpen.Location = new System.Drawing.Point(118, 26);
+			this.buttonOpen.Location = new System.Drawing.Point(12, 57);
 			this.buttonOpen.Name = "buttonOpen";
 			this.buttonOpen.Size = new System.Drawing.Size(75, 27);
 			this.buttonOpen.TabIndex = 2;
@@ -103,23 +106,45 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "IP address";
 			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Controls.Add(this.buttonOpen);
+			this.panel1.Controls.Add(this.buttonTest);
+			this.panel1.Controls.Add(this.buttonClose);
+			this.panel1.Controls.Add(this.buttonOff);
+			this.panel1.Controls.Add(this.textBoxAddress);
+			this.panel1.Controls.Add(this.buttonOn);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(143, 281);
+			this.panel1.TabIndex = 8;
+			// 
+			// textBoxLog
+			// 
+			this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxLog.Location = new System.Drawing.Point(143, 0);
+			this.textBoxLog.Multiline = true;
+			this.textBoxLog.Name = "textBoxLog";
+			this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxLog.Size = new System.Drawing.Size(321, 281);
+			this.textBoxLog.TabIndex = 9;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(464, 281);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.buttonTest);
-			this.Controls.Add(this.buttonOff);
-			this.Controls.Add(this.buttonOn);
-			this.Controls.Add(this.textBoxAddress);
-			this.Controls.Add(this.buttonClose);
-			this.Controls.Add(this.buttonOpen);
+			this.Controls.Add(this.textBoxLog);
+			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "MainForm";
 			this.Text = "Pigpiod C# I/F Test";
 			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -134,6 +159,8 @@
 		private System.Windows.Forms.Button buttonClose;
 		private System.Windows.Forms.Button buttonOpen;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.TextBox textBoxLog;
 	}
 }
 
