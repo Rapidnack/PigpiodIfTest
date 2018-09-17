@@ -1,5 +1,6 @@
 ﻿using Rapidnack.Net;
 using System;
+using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,7 +49,9 @@ namespace PigpiodIfTest
 				Console.WriteLine("callback: {0}, {1}, {2}, {3}", gpio, level, tick, user);
 				Invoke(new Action(() =>
 				{
-					textBoxAddress.Enabled = (level == PigpiodIf.PI_LOW);
+					bool isLow = (level == PigpiodIf.PI_LOW);
+					textBoxAddress.Enabled = isLow;
+					textBoxAddress.BackColor = isLow ? Color.Lime : Color.Aqua;
 				}));
 			});
 			try
@@ -69,6 +72,7 @@ namespace PigpiodIfTest
 			{
 				pigpiodIf.callback_cancel(callback);
 				textBoxAddress.Enabled = true;
+				textBoxAddress.BackColor = SystemColors.Window;
 			}
 
 			buttonOn.Enabled = true;

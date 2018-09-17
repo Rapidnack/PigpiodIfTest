@@ -98,7 +98,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(284, 261);
+			this.ClientSize = new System.Drawing.Size(464, 281);
 			this.Controls.Add(this.buttonTest);
 			this.Controls.Add(this.buttonOff);
 			this.Controls.Add(this.buttonOn);
@@ -106,7 +106,7 @@
 			this.Controls.Add(this.buttonClose);
 			this.Controls.Add(this.buttonOpen);
 			this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "MainForm";
 			this.Text = "Pigpiod C# I/F Test";
 			this.Load += new System.EventHandler(this.MainForm_Load);
