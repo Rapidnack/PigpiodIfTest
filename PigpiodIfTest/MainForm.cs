@@ -118,9 +118,9 @@ namespace PigpiodIfTest
 				xPiGpiodIf.t7(pigpiodIf);
 				xPiGpiodIf.t8(pigpiodIf);
 				xPiGpiodIf.t9(pigpiodIf);
-				xPiGpiodIf.ta(pigpiodIf);
-				xPiGpiodIf.tb(pigpiodIf);
-				xPiGpiodIf.tc(pigpiodIf);
+				//xPiGpiodIf.ta(pigpiodIf);
+				//xPiGpiodIf.tb(pigpiodIf);
+				//xPiGpiodIf.tc(pigpiodIf);
 			});
 
 			buttonTest.Enabled = true;
