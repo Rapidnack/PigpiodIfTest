@@ -72,7 +72,6 @@
 			this.textBoxAddress.Name = "textBoxAddress";
 			this.textBoxAddress.Size = new System.Drawing.Size(100, 23);
 			this.textBoxAddress.TabIndex = 0;
-			this.textBoxAddress.Text = "192.168.1.18";
 			// 
 			// buttonClose
 			// 
