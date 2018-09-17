@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace PigpiodIfTest
+namespace Rapidnack.Common
 {
 	public class LogWriter : System.IO.TextWriter
 	{
@@ -14,7 +14,7 @@ namespace PigpiodIfTest
 
 		#region # private field
 
-		private const int LINE_NUMS = 300;
+		private int lineNums = 300;
 
 		#endregion
 
@@ -39,6 +39,12 @@ namespace PigpiodIfTest
 			Text = string.Empty;
 		}
 
+		public LogWriter(int lineNums)
+			: this()
+		{
+			this.lineNums = lineNums;
+		}
+
 		#endregion
 
 
@@ -56,9 +62,9 @@ namespace PigpiodIfTest
 			Text += value;
 
 			string[] lines = Text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-			if (lines.Length > LINE_NUMS)
+			if (lines.Length > lineNums)
 			{
-				lines = lines.Skip(lines.Length - LINE_NUMS).ToArray();
+				lines = lines.Skip(lines.Length - lineNums).ToArray();
 			}
 			Text = string.Join("\r\n", lines);
 

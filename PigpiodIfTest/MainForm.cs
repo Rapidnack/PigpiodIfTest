@@ -1,4 +1,5 @@
-﻿using Rapidnack.Net;
+﻿using Rapidnack.Common;
+using Rapidnack.Net;
 using System;
 using System.Drawing;
 using System.Threading;
@@ -10,6 +11,7 @@ namespace PigpiodIfTest
 	public partial class MainForm : Form
 	{
 		private const int GPIO = 5;
+
 		private LogWriter logWriter;
 		private PigpiodIf pigpiodIf = new PigpiodIf();
 		private CancellationTokenSource cts;
