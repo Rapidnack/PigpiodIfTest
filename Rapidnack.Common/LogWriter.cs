@@ -57,8 +57,6 @@ namespace Rapidnack.Common
 
 		public override void Write(string value)
 		{
-			base.Write(value);
-
 			Text += value;
 
 			string[] lines = Text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
