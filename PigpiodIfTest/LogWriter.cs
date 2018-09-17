@@ -15,6 +15,13 @@ namespace PigpiodIfTest
 		#endregion
 
 
+		#region # private field
+
+		private const int LINE_NUMS = 300;
+
+		#endregion
+
+
 		#region # public property
 
 		public override System.Text.Encoding Encoding
@@ -50,6 +57,14 @@ namespace PigpiodIfTest
 			base.Write(value);
 
 			Text += value;
+
+			string[] lines = Text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+			if (lines.Length > LINE_NUMS)
+			{
+				lines = lines.Skip(lines.Length - LINE_NUMS).ToArray();
+			}
+			Text = string.Join("\r\n", lines);
+
 			if (TextChanged != null)
 			{
 				TextChanged.Invoke(this, new EventArgs());
