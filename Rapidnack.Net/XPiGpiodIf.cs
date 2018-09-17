@@ -7,7 +7,7 @@ namespace Rapidnack.Net
 	{
 		#region # private const
 
-		private const int GPIO = 25;
+		private const int GPIO = 5;
 
 		#endregion
 

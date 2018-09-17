@@ -9,6 +9,7 @@ namespace PigpiodIfTest
 {
 	public partial class MainForm : Form
 	{
+		private const int GPIO = 5;
 		private LogWriter logWriter;
 		private PigpiodIf pigpiodIf = new PigpiodIf();
 		private CancellationTokenSource cts;
@@ -60,7 +61,7 @@ namespace PigpiodIfTest
 			buttonOn.Enabled = false;
 			buttonOff.Enabled = true;
 
-			var callback = pigpiodIf.callback(25, PigpiodIf.EITHER_EDGE, (gpio, level, tick, user) =>
+			var callback = pigpiodIf.callback(GPIO, PigpiodIf.EITHER_EDGE, (gpio, level, tick, user) =>
 			{
 				Console.WriteLine("callback: {0}, {1}, {2}, {3}", gpio, level, tick, user);
 				Invoke(new Action(() =>
@@ -77,9 +78,9 @@ namespace PigpiodIfTest
 				{
 					while (cts.Token.IsCancellationRequested == false)
 					{
-						pigpiodIf.gpio_write(25, PigpiodIf.PI_HIGH);
+						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
 						await Task.Delay(500);
-						pigpiodIf.gpio_write(25, PigpiodIf.PI_LOW);
+						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
 						await Task.Delay(500);
 					}
 				});
