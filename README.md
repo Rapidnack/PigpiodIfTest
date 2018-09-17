@@ -37,7 +37,7 @@ Like pigpio, this software is released under the Unlicense, see LICENSE.
 
 # Authors
 
-Rapidnack
+[Rapidnack](http://rapidnack.com/)
 
 # References
 
