@@ -36,13 +36,14 @@
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.textBoxLog = new System.Windows.Forms.TextBox();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.textBoxLog = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonTest
 			// 
+			this.buttonTest.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonTest.Location = new System.Drawing.Point(12, 206);
 			this.buttonTest.Name = "buttonTest";
 			this.buttonTest.Size = new System.Drawing.Size(65, 27);
@@ -53,6 +54,7 @@
 			// 
 			// buttonOff
 			// 
+			this.buttonOff.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonOff.Location = new System.Drawing.Point(83, 130);
 			this.buttonOff.Name = "buttonOff";
 			this.buttonOff.Size = new System.Drawing.Size(65, 27);
@@ -63,6 +65,7 @@
 			// 
 			// buttonOn
 			// 
+			this.buttonOn.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonOn.Location = new System.Drawing.Point(12, 130);
 			this.buttonOn.Name = "buttonOn";
 			this.buttonOn.Size = new System.Drawing.Size(65, 27);
@@ -80,6 +83,7 @@
 			// 
 			// buttonClose
 			// 
+			this.buttonClose.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonClose.Location = new System.Drawing.Point(83, 57);
 			this.buttonClose.Name = "buttonClose";
 			this.buttonClose.Size = new System.Drawing.Size(65, 27);
@@ -90,6 +94,7 @@
 			// 
 			// buttonOpen
 			// 
+			this.buttonOpen.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonOpen.Location = new System.Drawing.Point(12, 57);
 			this.buttonOpen.Name = "buttonOpen";
 			this.buttonOpen.Size = new System.Drawing.Size(65, 27);
@@ -101,9 +106,10 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.label1.Location = new System.Drawing.Point(12, 9);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(79, 16);
+			this.label1.Size = new System.Drawing.Size(89, 16);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "IP address";
 			// 
@@ -123,18 +129,9 @@
 			this.panel1.Size = new System.Drawing.Size(160, 281);
 			this.panel1.TabIndex = 0;
 			// 
-			// textBoxLog
-			// 
-			this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxLog.Location = new System.Drawing.Point(160, 0);
-			this.textBoxLog.Multiline = true;
-			this.textBoxLog.Name = "textBoxLog";
-			this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBoxLog.Size = new System.Drawing.Size(304, 281);
-			this.textBoxLog.TabIndex = 1;
-			// 
 			// buttonCancel
 			// 
+			this.buttonCancel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonCancel.Location = new System.Drawing.Point(83, 206);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(65, 27);
@@ -142,6 +139,18 @@
 			this.buttonCancel.Text = "Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
+			// textBoxLog
+			// 
+			this.textBoxLog.BackColor = System.Drawing.SystemColors.Window;
+			this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxLog.Location = new System.Drawing.Point(160, 0);
+			this.textBoxLog.Multiline = true;
+			this.textBoxLog.Name = "textBoxLog";
+			this.textBoxLog.ReadOnly = true;
+			this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.textBoxLog.Size = new System.Drawing.Size(304, 281);
+			this.textBoxLog.TabIndex = 1;
 			// 
 			// MainForm
 			// 

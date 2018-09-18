@@ -82,6 +82,8 @@ namespace PigpiodIfTest
 				{
 					while (true)
 					{
+						ct.ThrowIfCancellationRequested();
+
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
 						await Task.Delay(500, ct);
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
