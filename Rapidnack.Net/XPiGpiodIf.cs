@@ -788,10 +788,7 @@ Or to take Arms against a Sea of troubles,
 				Console.WriteLine("TEST {0}.{1} FAILED got {2} ({3}: {4})", t, st, got, desc, expect);
 			}
 
-			if (ct.IsCancellationRequested)
-			{
-				throw new Exception("Canceled by user.");
-			}
+			ct.ThrowIfCancellationRequested();
 		}
 
 		#endregion

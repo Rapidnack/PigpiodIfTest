@@ -80,14 +80,18 @@ namespace PigpiodIfTest
 				var ct = cts.Token;
 				await Task.Run(async () =>
 				{
-					while (ct.IsCancellationRequested == false)
+					while (true)
 					{
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
-						await Task.Delay(500);
+						await Task.Delay(500, ct);
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
-						await Task.Delay(500);
+						await Task.Delay(500, ct);
 					}
-				});
+				}, ct);
+			}
+			catch (OperationCanceledException ex)
+			{
+				System.Console.WriteLine(ex.Message);
 			}
 			finally
 			{
@@ -131,9 +135,9 @@ namespace PigpiodIfTest
 					//xPiGpiodIf.ta(pigpiodIf, ct);
 					//xPiGpiodIf.tb(pigpiodIf, ct);
 					//xPiGpiodIf.tc(pigpiodIf, ct);
-				});
+				}, ct);
 			}
-			catch (Exception ex)
+			catch (OperationCanceledException ex)
 			{
 				System.Console.WriteLine(ex.Message);
 			}
