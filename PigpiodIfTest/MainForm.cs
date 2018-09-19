@@ -30,9 +30,13 @@ namespace PigpiodIfTest
 			{
 				Invoke(new Action(() =>
 				{
-					textBoxLog.Text = logWriter.Text;
-					textBoxLog.SelectionStart = textBoxLog.Text.Length;
-					textBoxLog.ScrollToCaret();
+					int limit = 10000;
+					if (textBoxLog.Text.Length + evt.Length > limit)
+					{
+						textBoxLog.Select(0, Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
+						textBoxLog.SelectedText = string.Empty;
+					}
+					textBoxLog.AppendText(evt);
 				}));
 			};
 
