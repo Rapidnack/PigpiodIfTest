@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PigpiodIfTest", "PigpiodIfTest.csproj", "{7D915582-45A0-4EA8-BA27-DEE2A4ECEB11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PigpiodIfTest", "PigpiodIfTest\PigpiodIfTest.csproj", "{7D915582-45A0-4EA8-BA27-DEE2A4ECEB11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapidnack.Net", "..\Rapidnack.Net\Rapidnack.Net.csproj", "{DFB70FEA-CE2D-45C0-B839-E930C95737DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapidnack.Net", "Rapidnack.Net\Rapidnack.Net.csproj", "{DFB70FEA-CE2D-45C0-B839-E930C95737DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapidnack.Common", "..\Rapidnack.Common\Rapidnack.Common.csproj", "{8EC10676-8726-4204-A9CA-C2D01D90E105}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapidnack.Common", "Rapidnack.Common\Rapidnack.Common.csproj", "{8EC10676-8726-4204-A9CA-C2D01D90E105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
