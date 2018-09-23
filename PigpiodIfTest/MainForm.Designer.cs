@@ -43,7 +43,6 @@
 			// 
 			// buttonTest
 			// 
-			this.buttonTest.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonTest.Location = new System.Drawing.Point(12, 206);
 			this.buttonTest.Name = "buttonTest";
 			this.buttonTest.Size = new System.Drawing.Size(65, 27);
@@ -54,7 +53,6 @@
 			// 
 			// buttonOff
 			// 
-			this.buttonOff.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonOff.Location = new System.Drawing.Point(83, 130);
 			this.buttonOff.Name = "buttonOff";
 			this.buttonOff.Size = new System.Drawing.Size(65, 27);
@@ -65,7 +63,6 @@
 			// 
 			// buttonOn
 			// 
-			this.buttonOn.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonOn.Location = new System.Drawing.Point(12, 130);
 			this.buttonOn.Name = "buttonOn";
 			this.buttonOn.Size = new System.Drawing.Size(65, 27);
@@ -78,12 +75,11 @@
 			// 
 			this.textBoxAddress.Location = new System.Drawing.Point(12, 28);
 			this.textBoxAddress.Name = "textBoxAddress";
-			this.textBoxAddress.Size = new System.Drawing.Size(136, 23);
+			this.textBoxAddress.Size = new System.Drawing.Size(136, 26);
 			this.textBoxAddress.TabIndex = 1;
 			// 
 			// buttonClose
 			// 
-			this.buttonClose.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonClose.Location = new System.Drawing.Point(83, 57);
 			this.buttonClose.Name = "buttonClose";
 			this.buttonClose.Size = new System.Drawing.Size(65, 27);
@@ -94,7 +90,6 @@
 			// 
 			// buttonOpen
 			// 
-			this.buttonOpen.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonOpen.Location = new System.Drawing.Point(12, 57);
 			this.buttonOpen.Name = "buttonOpen";
 			this.buttonOpen.Size = new System.Drawing.Size(65, 27);
@@ -106,10 +101,9 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.label1.Location = new System.Drawing.Point(12, 9);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(89, 16);
+			this.label1.Size = new System.Drawing.Size(79, 16);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "IP address";
 			// 
@@ -131,7 +125,6 @@
 			// 
 			// buttonCancel
 			// 
-			this.buttonCancel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.buttonCancel.Location = new System.Drawing.Point(83, 206);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(65, 27);
@@ -144,6 +137,7 @@
 			// 
 			this.textBoxLog.BackColor = System.Drawing.SystemColors.Window;
 			this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.textBoxLog.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.textBoxLog.Location = new System.Drawing.Point(160, 0);
 			this.textBoxLog.Multiline = true;
 			this.textBoxLog.Name = "textBoxLog";
@@ -159,7 +153,7 @@
 			this.ClientSize = new System.Drawing.Size(464, 281);
 			this.Controls.Add(this.textBoxLog);
 			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "MainForm";
 			this.Text = "Pigpiod C# I/F Test";

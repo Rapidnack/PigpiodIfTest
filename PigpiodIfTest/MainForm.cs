@@ -24,8 +24,8 @@ namespace PigpiodIfTest
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			logWriter = new LogWriter();
-			System.Console.SetOut(logWriter);
-			System.Console.SetError(logWriter);
+			Console.SetOut(logWriter);
+			Console.SetError(logWriter);
 			logWriter.TextChanged += (s, evt) =>
 			{
 				Invoke(new Action(() =>
@@ -33,7 +33,8 @@ namespace PigpiodIfTest
 					int limit = 10000;
 					if (textBoxLog.Text.Length + evt.Length > limit)
 					{
-						textBoxLog.Select(0, Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
+						textBoxLog.Select(0, 
+							Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
 						textBoxLog.SelectedText = string.Empty;
 					}
 					textBoxLog.AppendText(evt);
@@ -97,7 +98,7 @@ namespace PigpiodIfTest
 			}
 			catch (OperationCanceledException ex)
 			{
-				System.Console.WriteLine(ex.Message);
+				Console.WriteLine(ex.Message);
 			}
 			finally
 			{
@@ -145,7 +146,7 @@ namespace PigpiodIfTest
 			}
 			catch (OperationCanceledException ex)
 			{
-				System.Console.WriteLine(ex.Message);
+				Console.WriteLine(ex.Message);
 			}
 			finally
 			{
