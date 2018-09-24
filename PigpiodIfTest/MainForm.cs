@@ -31,7 +31,7 @@ namespace PigpiodIfTest
 				Invoke(new Action(() =>
 				{
 					int limit = 10000;
-					if (textBoxLog.Text.Length + evt.Length > limit)
+					if (textBoxLog.Text.Length + evt.Length > limit * 2)
 					{
 						textBoxLog.Select(0, 
 							Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
