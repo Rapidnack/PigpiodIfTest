@@ -752,7 +752,7 @@ Or to take Arms against a Sea of troubles,
 
 			/* this test requires a MCP3202 on SPI channel 1 */
 
-			h = pigpiodIf.spi_open(1, 50000, 0);
+			h = pigpiodIf.spi_open(2, 50000, 256 + 0);
 			CHECK(12, 1, h, 0, 0, "spi open", ct);
 
 
