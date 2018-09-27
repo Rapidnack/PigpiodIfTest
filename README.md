@@ -9,7 +9,7 @@ With Rapidnack.Net/PiGpiodIf.cs you can debug on Visual Studio using Raspberry P
 
 You can also run the debugged executable file directly on Raspberry Pi.
 
-![run on raspberry pi](http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/run1.png)
+![run on raspberry pi](http://rapidack.sakura.ne.jp/ttl/wp-content/uploads/2018/09/run2.png)
 
 # Dependency
 
