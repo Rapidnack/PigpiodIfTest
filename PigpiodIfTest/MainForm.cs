@@ -33,7 +33,7 @@ namespace PigpiodIfTest
 					int limit = 10000;
 					if (textBoxLog.Text.Length + evt.Length > limit * 2)
 					{
-						textBoxLog.Select(0, 
+						textBoxLog.Select(0,
 							Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
 						textBoxLog.SelectedText = string.Empty;
 					}
@@ -96,9 +96,9 @@ namespace PigpiodIfTest
 					}
 				}, ct);
 			}
-			catch (OperationCanceledException ex)
+			catch (OperationCanceledException)
 			{
-				Console.WriteLine(ex.Message);
+				// nothing to do
 			}
 			finally
 			{
@@ -144,9 +144,9 @@ namespace PigpiodIfTest
 					//xPiGpiodIf.tc(pigpiodIf, ct);
 				}, ct);
 			}
-			catch (OperationCanceledException ex)
+			catch (OperationCanceledException)
 			{
-				Console.WriteLine(ex.Message);
+				// nothing to do
 			}
 			finally
 			{

@@ -120,7 +120,7 @@
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(160, 281);
+			this.panel1.Size = new System.Drawing.Size(160, 320);
 			this.panel1.TabIndex = 0;
 			// 
 			// buttonCancel
@@ -143,14 +143,14 @@
 			this.textBoxLog.Name = "textBoxLog";
 			this.textBoxLog.ReadOnly = true;
 			this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBoxLog.Size = new System.Drawing.Size(304, 281);
+			this.textBoxLog.Size = new System.Drawing.Size(320, 320);
 			this.textBoxLog.TabIndex = 1;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-			this.ClientSize = new System.Drawing.Size(464, 281);
+			this.ClientSize = new System.Drawing.Size(480, 320);
 			this.Controls.Add(this.textBoxLog);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));

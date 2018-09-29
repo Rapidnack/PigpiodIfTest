@@ -484,7 +484,7 @@ To the lascivious pleasing of a lute.
 			CHECK(8, 8, v, 0, 0, "set bank 2", ct);
 
 			v = pigpiodIf.set_bank_2(0xffffff);
-			CHECK(8, 9, v,-42, 0, "set bank 2", ct);
+			CHECK(8, 9, v, -42, 0, "set bank 2", ct);
 		}
 
 		public void t9(PigpiodIf pigpiodIf, CancellationToken ct)

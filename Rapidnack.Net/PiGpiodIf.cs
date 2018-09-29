@@ -2303,7 +2303,7 @@ namespace Rapidnack.Net
 		public Callback callback(UInt32 user_gpio, UInt32 edge, Action<UInt32, UInt32, UInt32, object> f)
 		{ return intCallback(user_gpio, edge, f, null, 0); }
 
-		public Callback callback_ex( UInt32 user_gpio, UInt32 edge, Action<UInt32, UInt32, UInt32, object> f, object user)
+		public Callback callback_ex(UInt32 user_gpio, UInt32 edge, Action<UInt32, UInt32, UInt32, object> f, object user)
 		{ return intCallback(user_gpio, edge, f, user, 1); }
 
 		public int callback_cancel(Callback callback)
@@ -2439,7 +2439,7 @@ namespace Rapidnack.Net
 
 		private int pigpio_notify()
 		{
-			if (NotifyTcpConnection == null || NotifyTcpConnection.Stream == null || 
+			if (NotifyTcpConnection == null || NotifyTcpConnection.Stream == null ||
 				NotifyTcpConnection.Stream.CanWrite == false || NotifyTcpConnection.Stream.CanRead == false)
 			{
 				return (int)EError.pigif_unconnected_pi;
@@ -2662,7 +2662,7 @@ namespace Rapidnack.Net
 			}
 		}
 
-		private Callback intCallback( UInt32 user_gpio, UInt32 edge, Action<UInt32, UInt32, UInt32, object> f, object user, int ex)
+		private Callback intCallback(UInt32 user_gpio, UInt32 edge, Action<UInt32, UInt32, UInt32, object> f, object user, int ex)
 		{
 			if ((user_gpio >= 0) && (user_gpio < 32) && (edge >= 0) && (edge <= 2) && f != null)
 			{
