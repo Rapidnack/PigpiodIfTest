@@ -80,7 +80,7 @@
 			// 
 			// buttonClose
 			// 
-			this.buttonClose.Location = new System.Drawing.Point(83, 57);
+			this.buttonClose.Location = new System.Drawing.Point(83, 60);
 			this.buttonClose.Name = "buttonClose";
 			this.buttonClose.Size = new System.Drawing.Size(65, 27);
 			this.buttonClose.TabIndex = 3;
@@ -90,7 +90,7 @@
 			// 
 			// buttonOpen
 			// 
-			this.buttonOpen.Location = new System.Drawing.Point(12, 57);
+			this.buttonOpen.Location = new System.Drawing.Point(12, 60);
 			this.buttonOpen.Name = "buttonOpen";
 			this.buttonOpen.Size = new System.Drawing.Size(65, 27);
 			this.buttonOpen.TabIndex = 2;
