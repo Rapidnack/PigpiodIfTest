@@ -12,8 +12,7 @@ namespace PigpiodIfTest
 	{
 		private const int GPIO = 5;
 
-		private LogWriter logWriter;
-		private PigpiodIf pigpiodIf = new PigpiodIf();
+		private PigpiodIf pigpiodIf;
 		private CancellationTokenSource cts;
 
 		public MainForm()
@@ -23,23 +22,7 @@ namespace PigpiodIfTest
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			logWriter = new LogWriter();
-			Console.SetOut(logWriter);
-			Console.SetError(logWriter);
-			logWriter.TextChanged += (s, evt) =>
-			{
-				Invoke(new Action(() =>
-				{
-					int limit = 10000;
-					if (textBoxLog.Text.Length + evt.Length > limit * 2)
-					{
-						textBoxLog.Select(0,
-							Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
-						textBoxLog.SelectedText = string.Empty;
-					}
-					textBoxLog.AppendText(evt);
-				}));
-			};
+			pigpiodIf = new PigpiodIf();
 
 			buttonClose.Enabled = false;
 			buttonOff.Enabled = false;

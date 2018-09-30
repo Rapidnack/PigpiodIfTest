@@ -37,7 +37,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.buttonCancel = new System.Windows.Forms.Button();
-			this.textBoxLog = new System.Windows.Forms.TextBox();
+			this.loggingTextBox1 = new Rapidnack.Common.LoggingTextBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -133,25 +133,24 @@
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
-			// textBoxLog
+			// loggingTextBox1
 			// 
-			this.textBoxLog.BackColor = System.Drawing.SystemColors.Window;
-			this.textBoxLog.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.textBoxLog.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.textBoxLog.Location = new System.Drawing.Point(160, 0);
-			this.textBoxLog.Multiline = true;
-			this.textBoxLog.Name = "textBoxLog";
-			this.textBoxLog.ReadOnly = true;
-			this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBoxLog.Size = new System.Drawing.Size(320, 320);
-			this.textBoxLog.TabIndex = 1;
+			this.loggingTextBox1.BackColor = System.Drawing.SystemColors.Window;
+			this.loggingTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.loggingTextBox1.Location = new System.Drawing.Point(160, 0);
+			this.loggingTextBox1.Multiline = true;
+			this.loggingTextBox1.Name = "loggingTextBox1";
+			this.loggingTextBox1.ReadOnly = true;
+			this.loggingTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.loggingTextBox1.Size = new System.Drawing.Size(320, 320);
+			this.loggingTextBox1.TabIndex = 1;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(480, 320);
-			this.Controls.Add(this.textBoxLog);
+			this.Controls.Add(this.loggingTextBox1);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(4);
@@ -175,8 +174,8 @@
 		private System.Windows.Forms.Button buttonOpen;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.TextBox textBoxLog;
 		private System.Windows.Forms.Button buttonCancel;
+		private Rapidnack.Common.LoggingTextBox loggingTextBox1;
 	}
 }
 

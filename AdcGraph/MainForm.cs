@@ -24,8 +24,8 @@ namespace AdcGraph
 		private const int NUM_FAST_SAMPLES = 100;
 
 		private const double AUTO_TRIGGER = 0.1;
+		private const int INTERVAL_IN_MS = 33;
 
-		private LogWriter logWriter;
 		private PigpiodIf pigpiodIf;
 		private CancellationTokenSource rollCts;
 		private CancellationTokenSource fastCts;
@@ -43,24 +43,6 @@ namespace AdcGraph
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			logWriter = new LogWriter();
-			Console.SetOut(logWriter);
-			Console.SetError(logWriter);
-			logWriter.TextChanged += (s, evt) =>
-			{
-				Invoke(new Action(() =>
-				{
-					int limit = 10000;
-					if (textBoxLog.Text.Length + evt.Length > limit * 2)
-					{
-						textBoxLog.Select(0,
-							Math.Min(textBoxLog.Text.Length, textBoxLog.Text.Length + evt.Length - limit));
-						textBoxLog.SelectedText = string.Empty;
-					}
-					textBoxLog.AppendText(evt);
-				}));
-			};
-
 			pigpiodIf = new PigpiodIf();
 
 			rollPlotModel = new PlotModel();
@@ -71,7 +53,9 @@ namespace AdcGraph
 				rollSeries[ch].Title = string.Format("CH{0}", ch);
 				rollPlotModel.Series.Add(rollSeries[ch]);
 			}
-			rollPlotModel.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 });
+			rollPlotModel.Axes.Add(
+				new LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 }
+			);
 
 			fastPlotModel = new PlotModel();
 			fastSeries = new LineSeries[NUM_FAST_CHANNELS];
@@ -81,7 +65,14 @@ namespace AdcGraph
 				fastSeries[ch].Title = string.Format("CH{0}", ch);
 				fastPlotModel.Series.Add(fastSeries[ch]);
 			}
-			fastPlotModel.Axes.Add(new LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 });
+			fastPlotModel.Axes.Add(
+				new LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 }
+			);
+
+			buttonClose.Enabled = false;
+			buttonRollStop.Enabled = false;
+			buttonFastStop.Enabled = false;
+			buttonLedStop.Enabled = false;
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)
@@ -144,7 +135,7 @@ namespace AdcGraph
 							if (b == 3)
 							{
 								TimeSpan ts = DateTime.Now - start;
-								double volt = 3.3 * (((buf[1] & 0x0F) * 256) + buf[2]) / 1023.0;
+								double volt = 3.3 * (((buf[1] & 0x0F) * 256) + buf[2]) / 1024.0;
 								volts[ch] = volt;
 								dataPoints[ch] = new DataPoint(ts.TotalSeconds, volt);
 							}
@@ -202,43 +193,6 @@ namespace AdcGraph
 			rollCts.Cancel();
 		}
 
-		private async void buttonLedStart_Click(object sender, EventArgs e)
-		{
-			buttonLedStart.Enabled = false;
-			buttonLedStop.Enabled = true;
-			try
-			{
-				ledCts = new CancellationTokenSource();
-				var ct = ledCts.Token;
-				await Task.Run(async () =>
-				{
-					while (true)
-					{
-						ct.ThrowIfCancellationRequested();
-
-						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
-						await Task.Delay(500, ct);
-						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
-						await Task.Delay(500, ct);
-					}
-				}, ct);
-			}
-			catch (OperationCanceledException)
-			{
-				// nothing to do
-			}
-			finally
-			{
-				buttonLedStart.Enabled = true;
-				buttonLedStop.Enabled = false;
-			}
-		}
-
-		private void buttonLedStop_Click(object sender, EventArgs e)
-		{
-			ledCts.Cancel();
-		}
-
 		private async void buttonFastStart_Click(object sender, EventArgs e)
 		{
 			buttonRollStart.Enabled = false;
@@ -280,7 +234,7 @@ namespace AdcGraph
 								if (b == 3)
 								{
 									TimeSpan ts = DateTime.Now - start;
-									volts[ch] = 3.3 * (((buf[1] & 0x0F) * 256) + buf[2]) / 1023.0;
+									volts[ch] = 3.3 * (((buf[1] & 0x0F) * 256) + buf[2]) / 1024.0;
 									if (0 < state && state < 3)
 									{
 										dataPoints[ch].RemoveAt(0);
@@ -335,7 +289,7 @@ namespace AdcGraph
 							}
 						}
 
-						int leftInMS = 33 - (int)(DateTime.Now - lastDispleyTime).TotalMilliseconds;
+						int leftInMS = INTERVAL_IN_MS - (int)(DateTime.Now - lastDispleyTime).TotalMilliseconds;
 						if (leftInMS > 0)
 						{
 							//Console.WriteLine("spentTime: {0}", leftInMS);
@@ -383,6 +337,43 @@ namespace AdcGraph
 		private void buttonFastStop_Click(object sender, EventArgs e)
 		{
 			fastCts.Cancel();
+		}
+
+		private async void buttonLedStart_Click(object sender, EventArgs e)
+		{
+			buttonLedStart.Enabled = false;
+			buttonLedStop.Enabled = true;
+			try
+			{
+				ledCts = new CancellationTokenSource();
+				var ct = ledCts.Token;
+				await Task.Run(async () =>
+				{
+					while (true)
+					{
+						ct.ThrowIfCancellationRequested();
+
+						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
+						await Task.Delay(500, ct);
+						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
+						await Task.Delay(500, ct);
+					}
+				}, ct);
+			}
+			catch (OperationCanceledException)
+			{
+				// nothing to do
+			}
+			finally
+			{
+				buttonLedStart.Enabled = true;
+				buttonLedStop.Enabled = false;
+			}
+		}
+
+		private void buttonLedStop_Click(object sender, EventArgs e)
+		{
+			ledCts.Cancel();
 		}
 
 		private void trackBarServo1_Scroll(object sender, EventArgs e)
