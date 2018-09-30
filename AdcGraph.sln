@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapidnack.Net", "Rapidnack.Net\Rapidnack.Net.csproj", "{DFB70FEA-CE2D-45C0-B839-E930C95737DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rapidnack.Common", "Rapidnack.Common\Rapidnack.Common.csproj", "{8EC10676-8726-4204-A9CA-C2D01D90E105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdcGraph", "AdcGraph\AdcGraph.csproj", "{3320789B-CC5F-49D4-BC2B-2AC52ECC282D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFB70FEA-CE2D-45C0-B839-E930C95737DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFB70FEA-CE2D-45C0-B839-E930C95737DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFB70FEA-CE2D-45C0-B839-E930C95737DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFB70FEA-CE2D-45C0-B839-E930C95737DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC10676-8726-4204-A9CA-C2D01D90E105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC10676-8726-4204-A9CA-C2D01D90E105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC10676-8726-4204-A9CA-C2D01D90E105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC10676-8726-4204-A9CA-C2D01D90E105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3320789B-CC5F-49D4-BC2B-2AC52ECC282D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3320789B-CC5F-49D4-BC2B-2AC52ECC282D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3320789B-CC5F-49D4-BC2B-2AC52ECC282D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3320789B-CC5F-49D4-BC2B-2AC52ECC282D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
