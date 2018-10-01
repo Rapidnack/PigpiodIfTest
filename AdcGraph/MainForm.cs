@@ -122,10 +122,8 @@ namespace AdcGraph
 						rollSeries[ch].Points.Clear();
 					}
 					DateTime start = DateTime.Now;
-					while (true)
+					while (!ct.IsCancellationRequested)
 					{
-						ct.ThrowIfCancellationRequested();
-
 						double[] volts = new double[NUM_ROLL_CHANNELS];
 						DataPoint[] dataPoints = new DataPoint[NUM_ROLL_CHANNELS];
 						for (int ch = 0; ch < NUM_ROLL_CHANNELS; ch++)
@@ -214,7 +212,7 @@ namespace AdcGraph
 						dataPoints[ch] = new List<DataPoint>();
 					}
 
-					while (true)
+					while (!ct.IsCancellationRequested)
 					{
 						int state = 0;
 						for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
@@ -224,8 +222,6 @@ namespace AdcGraph
 						DateTime start = DateTime.Now;
 						while (true)
 						{
-							ct.ThrowIfCancellationRequested();
-
 							double[] volts = new double[NUM_FAST_CHANNELS];
 							for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
 							{
@@ -349,10 +345,8 @@ namespace AdcGraph
 				var ct = ledCts.Token;
 				await Task.Run(async () =>
 				{
-					while (true)
+					while (!ct.IsCancellationRequested)
 					{
-						ct.ThrowIfCancellationRequested();
-
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
 						await Task.Delay(500, ct);
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);

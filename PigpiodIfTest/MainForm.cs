@@ -68,10 +68,8 @@ namespace PigpiodIfTest
 				var ct = cts.Token;
 				await Task.Run(async () =>
 				{
-					while (true)
+					while (!ct.IsCancellationRequested)
 					{
-						ct.ThrowIfCancellationRequested();
-
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
 						await Task.Delay(500, ct);
 						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
