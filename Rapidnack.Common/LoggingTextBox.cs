@@ -8,7 +8,7 @@ namespace Rapidnack.Common
 	{
 		private LogWriter logWriter;
 
-		[DefaultValue(10000), Category("Logging"), Description("Maximum number of lines")]
+		[DefaultValue(10000), Category("Logging"), Description("Maximum number of characters")]
 		public int Limit { get; set; } = 10000;
 
 		public LoggingTextBox()
