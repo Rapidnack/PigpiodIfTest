@@ -45,9 +45,9 @@
 			this.buttonRollStart = new System.Windows.Forms.Button();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPageLog = new System.Windows.Forms.TabPage();
+			this.loggingTextBox1 = new Rapidnack.Common.LoggingTextBox();
 			this.tabPageGraph = new System.Windows.Forms.TabPage();
 			this.plotView1 = new OxyPlot.WindowsForms.PlotView();
-			this.loggingTextBox1 = new Rapidnack.Common.LoggingTextBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo1)).BeginInit();
@@ -245,6 +245,18 @@
 			this.tabPageLog.Text = "Log";
 			this.tabPageLog.UseVisualStyleBackColor = true;
 			// 
+			// loggingTextBox1
+			// 
+			this.loggingTextBox1.BackColor = System.Drawing.SystemColors.Window;
+			this.loggingTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.loggingTextBox1.Location = new System.Drawing.Point(0, 0);
+			this.loggingTextBox1.Multiline = true;
+			this.loggingTextBox1.Name = "loggingTextBox1";
+			this.loggingTextBox1.ReadOnly = true;
+			this.loggingTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.loggingTextBox1.Size = new System.Drawing.Size(312, 290);
+			this.loggingTextBox1.TabIndex = 0;
+			// 
 			// tabPageGraph
 			// 
 			this.tabPageGraph.Controls.Add(this.plotView1);
@@ -268,19 +280,6 @@
 			this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
 			this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
 			this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-			// 
-			// loggingTextBox1
-			// 
-			this.loggingTextBox1.BackColor = System.Drawing.SystemColors.Window;
-			this.loggingTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.loggingTextBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.loggingTextBox1.Location = new System.Drawing.Point(0, 0);
-			this.loggingTextBox1.Multiline = true;
-			this.loggingTextBox1.Name = "loggingTextBox1";
-			this.loggingTextBox1.ReadOnly = true;
-			this.loggingTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.loggingTextBox1.Size = new System.Drawing.Size(312, 290);
-			this.loggingTextBox1.TabIndex = 0;
 			// 
 			// MainForm
 			// 
