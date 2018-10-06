@@ -241,7 +241,7 @@ namespace AdcGraph
 						}
 						Console.WriteLine("{0}", s);
 
-						this.Invoke((MethodInvoker)delegate ()
+						Invoke(new Action(() =>
 						{
 							for (int ch = 0; ch < NUM_ROLL_CHANNELS; ch++)
 							{
@@ -260,7 +260,7 @@ namespace AdcGraph
 							{
 								plotView1.Invalidate();
 							}
-						});
+						}));
 					}
 				}, ct);
 			}
@@ -399,7 +399,7 @@ namespace AdcGraph
 						}
 						lastDispleyTime = DateTime.Now;
 
-						this.Invoke((MethodInvoker)delegate ()
+						Invoke(new Action(() =>
 						{
 							for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
 							{
@@ -415,7 +415,7 @@ namespace AdcGraph
 							{
 								plotView1.Invalidate();
 							}
-						});
+						}));
 					}
 				}, ct);
 			}
