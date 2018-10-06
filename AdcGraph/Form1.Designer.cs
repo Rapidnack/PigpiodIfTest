@@ -1,6 +1,6 @@
 ﻿namespace AdcGraph
 {
-	partial class MainForm
+	partial class Form1
 	{
 		/// <summary>
 		/// 必要なデザイナー変数です。
@@ -60,7 +60,7 @@
 			// 
 			this.textBoxAddress.Location = new System.Drawing.Point(12, 28);
 			this.textBoxAddress.Name = "textBoxAddress";
-			this.textBoxAddress.Size = new System.Drawing.Size(136, 26);
+			this.textBoxAddress.Size = new System.Drawing.Size(136, 23);
 			this.textBoxAddress.TabIndex = 1;
 			// 
 			// buttonClose
@@ -117,7 +117,7 @@
 			// checkBoxServo2
 			// 
 			this.checkBoxServo2.AutoSize = true;
-			this.checkBoxServo2.Location = new System.Drawing.Point(12, 271);
+			this.checkBoxServo2.Location = new System.Drawing.Point(12, 177);
 			this.checkBoxServo2.Name = "checkBoxServo2";
 			this.checkBoxServo2.Size = new System.Drawing.Size(15, 14);
 			this.checkBoxServo2.TabIndex = 12;
@@ -127,7 +127,7 @@
 			// checkBoxServo1
 			// 
 			this.checkBoxServo1.AutoSize = true;
-			this.checkBoxServo1.Location = new System.Drawing.Point(12, 237);
+			this.checkBoxServo1.Location = new System.Drawing.Point(12, 143);
 			this.checkBoxServo1.Name = "checkBoxServo1";
 			this.checkBoxServo1.Size = new System.Drawing.Size(15, 14);
 			this.checkBoxServo1.TabIndex = 10;
@@ -136,7 +136,7 @@
 			// 
 			// buttonFastStop
 			// 
-			this.buttonFastStop.Location = new System.Drawing.Point(83, 140);
+			this.buttonFastStop.Location = new System.Drawing.Point(83, 255);
 			this.buttonFastStop.Name = "buttonFastStop";
 			this.buttonFastStop.Size = new System.Drawing.Size(65, 41);
 			this.buttonFastStop.TabIndex = 7;
@@ -146,7 +146,7 @@
 			// 
 			// buttonFastStart
 			// 
-			this.buttonFastStart.Location = new System.Drawing.Point(12, 140);
+			this.buttonFastStart.Location = new System.Drawing.Point(12, 255);
 			this.buttonFastStart.Name = "buttonFastStart";
 			this.buttonFastStart.Size = new System.Drawing.Size(65, 41);
 			this.buttonFastStart.TabIndex = 6;
@@ -158,7 +158,7 @@
 			// 
 			this.trackBarServo2.AutoSize = false;
 			this.trackBarServo2.LargeChange = 200;
-			this.trackBarServo2.Location = new System.Drawing.Point(36, 268);
+			this.trackBarServo2.Location = new System.Drawing.Point(36, 174);
 			this.trackBarServo2.Maximum = 2500;
 			this.trackBarServo2.Minimum = 500;
 			this.trackBarServo2.Name = "trackBarServo2";
@@ -173,7 +173,7 @@
 			// 
 			this.trackBarServo1.AutoSize = false;
 			this.trackBarServo1.LargeChange = 200;
-			this.trackBarServo1.Location = new System.Drawing.Point(36, 234);
+			this.trackBarServo1.Location = new System.Drawing.Point(36, 140);
 			this.trackBarServo1.Maximum = 2500;
 			this.trackBarServo1.Minimum = 500;
 			this.trackBarServo1.Name = "trackBarServo1";
@@ -186,7 +186,7 @@
 			// 
 			// buttonLedStop
 			// 
-			this.buttonLedStop.Location = new System.Drawing.Point(83, 187);
+			this.buttonLedStop.Location = new System.Drawing.Point(83, 93);
 			this.buttonLedStop.Name = "buttonLedStop";
 			this.buttonLedStop.Size = new System.Drawing.Size(65, 41);
 			this.buttonLedStop.TabIndex = 9;
@@ -196,7 +196,7 @@
 			// 
 			// buttonLedStart
 			// 
-			this.buttonLedStart.Location = new System.Drawing.Point(12, 187);
+			this.buttonLedStart.Location = new System.Drawing.Point(12, 93);
 			this.buttonLedStart.Name = "buttonLedStart";
 			this.buttonLedStart.Size = new System.Drawing.Size(65, 41);
 			this.buttonLedStart.TabIndex = 8;
@@ -206,7 +206,7 @@
 			// 
 			// buttonRollStop
 			// 
-			this.buttonRollStop.Location = new System.Drawing.Point(83, 93);
+			this.buttonRollStop.Location = new System.Drawing.Point(83, 208);
 			this.buttonRollStop.Name = "buttonRollStop";
 			this.buttonRollStop.Size = new System.Drawing.Size(65, 41);
 			this.buttonRollStop.TabIndex = 5;
@@ -216,7 +216,7 @@
 			// 
 			// buttonRollStart
 			// 
-			this.buttonRollStart.Location = new System.Drawing.Point(12, 93);
+			this.buttonRollStart.Location = new System.Drawing.Point(12, 208);
 			this.buttonRollStart.Name = "buttonRollStart";
 			this.buttonRollStart.Size = new System.Drawing.Size(65, 41);
 			this.buttonRollStart.TabIndex = 4;
@@ -281,18 +281,18 @@
 			this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
 			this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
 			// 
-			// MainForm
+			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			this.ClientSize = new System.Drawing.Size(480, 320);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+			this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
 			this.Margin = new System.Windows.Forms.Padding(4);
-			this.Name = "MainForm";
+			this.Name = "Form1";
 			this.Text = "ADC Graph";
-			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.Load += new System.EventHandler(this.Form1_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).EndInit();

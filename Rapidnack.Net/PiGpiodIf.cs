@@ -76,8 +76,9 @@ namespace Rapidnack.Net
 
 		#region # event
 
-		public event EventHandler StreamChanged;
+		public event EventHandler CommandStreamChanged;
 		public event EventHandler NotifyStreamChanged;
+		public event EventHandler StreamChanged;
 
 		#endregion
 
@@ -949,17 +950,21 @@ namespace Rapidnack.Net
 			}
 		}
 
-		private NetworkStream _stream = null;
-		public NetworkStream Stream
+		private NetworkStream _commandStream = null;
+		public NetworkStream CommandStream
 		{
 			get
 			{
-				return _stream;
+				return _commandStream;
 			}
 			private set
 			{
-				_stream = value;
+				_commandStream = value;
 
+				if (CommandStreamChanged != null)
+				{
+					CommandStreamChanged.Invoke(this, new EventArgs());
+				}
 				if (StreamChanged != null)
 				{
 					StreamChanged.Invoke(this, new EventArgs());
@@ -981,6 +986,10 @@ namespace Rapidnack.Net
 				if (NotifyStreamChanged != null)
 				{
 					NotifyStreamChanged.Invoke(this, new EventArgs());
+				}
+				if (StreamChanged != null)
+				{
+					StreamChanged.Invoke(this, new EventArgs());
 				}
 			}
 		}
@@ -1025,7 +1034,7 @@ namespace Rapidnack.Net
 			this.TcpConnection = new TcpConnection();
 			this.TcpConnection.StreamChanged += (s, evt) =>
 			{
-				this.Stream = this.TcpConnection.Stream;
+				this.CommandStream = this.TcpConnection.Stream;
 			};
 
 			NotifyTcpConnection = new TcpConnection();
@@ -1210,7 +1219,7 @@ namespace Rapidnack.Net
 			if (this.TcpConnection != null)
 			{
 				// Execute handlers of StreamChanged event, and call Close()
-				this.Stream = null;
+				this.CommandStream = null;
 				this.TcpConnection.Close();
 			}
 			if (NotifyTcpConnection != null)

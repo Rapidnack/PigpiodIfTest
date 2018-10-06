@@ -1,7 +1,6 @@
 ﻿using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
-using Rapidnack.Common;
 using Rapidnack.Net;
 using System;
 using System.Collections.Generic;
@@ -12,36 +11,45 @@ using System.Windows.Forms;
 
 namespace AdcGraph
 {
-	public partial class MainForm : Form
+	public partial class Form1 : Form
 	{
+		private PigpiodIf pigpiodIf;
+
 		private const int GPIO = 5;
+		private CancellationTokenSource ledCts;
+
 		private const int SERVO_1 = 26;
 		private const int SERVO_2 = 13;
 
 		private const int NUM_ROLL_CHANNELS = 8;
 		private const int NUM_ROLL_SAMPLES = 100;
-		private const int NUM_FAST_CHANNELS = 2;
-		private const int NUM_FAST_SAMPLES = 100;
-
-		private const double AUTO_TRIGGER = 0.1;
-		private const int INTERVAL_IN_MS = 33;
-
-		private PigpiodIf pigpiodIf;
 		private CancellationTokenSource rollCts;
-		private CancellationTokenSource fastCts;
-		private CancellationTokenSource ledCts;
 		private PlotModel rollPlotModel;
 		private LineSeries[] rollSeries;
+
+		private enum EState
+		{
+			Idle,
+			Arming,
+			WaitingForTrigger1,
+			WaitingForTrigger2,
+			Triggered
+		}
+		private const int NUM_FAST_CHANNELS = 2;
+		private const int NUM_FAST_SAMPLES = 100;
+		private const double AUTO_TRIGGER = 0.1;
+		private const int INTERVAL_IN_MS = 33;
+		private CancellationTokenSource fastCts;
 		private PlotModel fastPlotModel;
 		private LineSeries[] fastSeries;
 		private DateTime lastDispleyTime = DateTime.MinValue;
 
-		public MainForm()
+		public Form1()
 		{
 			InitializeComponent();
 		}
 
-		private void MainForm_Load(object sender, EventArgs e)
+		private void Form1_Load(object sender, EventArgs e)
 		{
 			pigpiodIf = new PigpiodIf();
 
@@ -77,9 +85,9 @@ namespace AdcGraph
 
 		private void buttonOpen_Click(object sender, EventArgs e)
 		{
-			pigpiodIf.NotifyStreamChanged += (s, evt) =>
+			pigpiodIf.StreamChanged += (s, evt) =>
 			{
-				if (pigpiodIf.Stream != null)
+				if (pigpiodIf.CommandStream != null && pigpiodIf.NotifyStream != null)
 				{
 					Invoke(new Action(() =>
 					{
@@ -102,6 +110,89 @@ namespace AdcGraph
 			buttonClose.Enabled = false;
 		}
 
+		private async void buttonLedStart_Click(object sender, EventArgs e)
+		{
+			buttonLedStart.Enabled = false;
+			buttonLedStop.Enabled = true;
+			try
+			{
+				ledCts = new CancellationTokenSource();
+				var ct = ledCts.Token;
+				await Task.Run(async () =>
+				{
+					while (!ct.IsCancellationRequested)
+					{
+						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
+						await Task.Delay(500, ct);
+						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
+						await Task.Delay(500, ct);
+					}
+				}, ct);
+			}
+			catch (OperationCanceledException)
+			{
+				// nothing to do
+			}
+			finally
+			{
+				buttonLedStart.Enabled = true;
+				buttonLedStop.Enabled = false;
+			}
+		}
+
+		private void buttonLedStop_Click(object sender, EventArgs e)
+		{
+			ledCts.Cancel();
+		}
+
+		private void checkBoxServo1_CheckedChanged(object sender, EventArgs e)
+		{
+			if (checkBoxServo1.Checked)
+			{
+				pigpiodIf.set_servo_pulsewidth(SERVO_1, (UInt32)trackBarServo1.Value);
+			}
+			else
+			{
+				pigpiodIf.set_servo_pulsewidth(SERVO_1, 0);
+			}
+		}
+
+		private void trackBarServo1_Scroll(object sender, EventArgs e)
+		{
+			if (checkBoxServo1.Checked)
+			{
+				pigpiodIf.set_servo_pulsewidth(SERVO_1, (UInt32)trackBarServo1.Value);
+			}
+			else
+			{
+				checkBoxServo1.Checked = true;
+			}
+		}
+
+		private void checkBoxServo2_CheckedChanged(object sender, EventArgs e)
+		{
+			if (checkBoxServo2.Checked)
+			{
+				pigpiodIf.set_servo_pulsewidth(SERVO_2, (UInt32)trackBarServo2.Value);
+			}
+			else
+			{
+				pigpiodIf.set_servo_pulsewidth(SERVO_2, 0);
+			}
+		}
+
+		private void trackBarServo2_Scroll(object sender, EventArgs e)
+		{
+			if (checkBoxServo2.Checked)
+			{
+				pigpiodIf.set_servo_pulsewidth(SERVO_2, (UInt32)trackBarServo2.Value);
+			}
+			else
+			{
+				checkBoxServo2.Checked = true;
+			}
+		}
+
 		private async void buttonRollStart_Click(object sender, EventArgs e)
 		{
 			buttonRollStart.Enabled = false;
@@ -116,6 +207,10 @@ namespace AdcGraph
 				await Task.Run(() =>
 				{
 					h = pigpiodIf.spi_open(2, 1000000, 256 + 0);
+					if (h < 0)
+					{
+						throw new PigpiodIfException(h, "PigpiodIf: " + pigpiodIf.pigpio_error(h));
+					}
 
 					for (int ch = 0; ch < NUM_ROLL_CHANNELS; ch++)
 					{
@@ -133,7 +228,7 @@ namespace AdcGraph
 							if (b == 3)
 							{
 								TimeSpan ts = DateTime.Now - start;
-								double volt = 3.3 * (((buf[1] & 0x0F) * 256) + buf[2]) / 1024.0;
+								double volt = 3.3 * (((buf[1] & 0x0f) * 256) + buf[2]) / 1024.0;
 								volts[ch] = volt;
 								dataPoints[ch] = new DataPoint(ts.TotalSeconds, volt);
 							}
@@ -173,6 +268,10 @@ namespace AdcGraph
 			{
 				// nothing to do
 			}
+			catch (PigpiodIfException ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 			finally
 			{
 				if (h >= 0)
@@ -205,6 +304,10 @@ namespace AdcGraph
 				await Task.Run(async () =>
 				{
 					h = pigpiodIf.spi_open(2, 1000000, 256 + 0);
+					if (h < 0)
+					{
+						throw new PigpiodIfException(h, "PigpiodIf: " + pigpiodIf.pigpio_error(h));
+					}
 
 					List<DataPoint>[] dataPoints = new List<DataPoint>[NUM_FAST_CHANNELS];
 					for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
@@ -214,7 +317,7 @@ namespace AdcGraph
 
 					while (!ct.IsCancellationRequested)
 					{
-						int state = 0;
+						EState state = EState.Arming;
 						for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
 						{
 							dataPoints[ch].Clear();
@@ -230,8 +333,8 @@ namespace AdcGraph
 								if (b == 3)
 								{
 									TimeSpan ts = DateTime.Now - start;
-									volts[ch] = 3.3 * (((buf[1] & 0x0F) * 256) + buf[2]) / 1024.0;
-									if (0 < state && state < 3)
+									volts[ch] = 3.3 * (((buf[1] & 0x0f) * 256) + buf[2]) / 1024.0;
+									if (EState.Arming < state && state < EState.Triggered)
 									{
 										dataPoints[ch].RemoveAt(0);
 									}
@@ -243,27 +346,27 @@ namespace AdcGraph
 							{
 								switch (state)
 								{
-									case 0:
-										state = 1;
+									case EState.Arming:
+										state = EState.WaitingForTrigger1;
 										break;
-									case 1:
+									case EState.WaitingForTrigger1:
 										if (dataPoints[0].Last().Y < 3.3 / 2)
 										{
-											state = 2;
+											state = EState.WaitingForTrigger2;
 										}
 										else if ((DateTime.Now - start) >= TimeSpan.FromSeconds(AUTO_TRIGGER))
 										{
-											state = 3;
+											state = EState.Triggered;
 										}
 										break;
-									case 2:
+									case EState.WaitingForTrigger2:
 										if (dataPoints[0].Last().Y > 3.3 / 2)
 										{
-											state = 3;
+											state = EState.Triggered;
 										}
 										else if ((DateTime.Now - start) >= TimeSpan.FromSeconds(AUTO_TRIGGER))
 										{
-											state = 3;
+											state = EState.Triggered;
 										}
 										break;
 								}
@@ -271,8 +374,11 @@ namespace AdcGraph
 
 							if (dataPoints[0].Count >= NUM_FAST_SAMPLES)
 							{
-								if (state == 3)
+								if (state == EState.Triggered)
+								{
+									state = EState.Idle;
 									break;
+								}
 							}
 						}
 						for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
@@ -317,6 +423,10 @@ namespace AdcGraph
 			{
 				// nothing to do
 			}
+			catch (PigpiodIfException ex)
+			{
+				Console.WriteLine(ex.Message);
+			}
 			finally
 			{
 				if (h >= 0)
@@ -333,89 +443,6 @@ namespace AdcGraph
 		private void buttonFastStop_Click(object sender, EventArgs e)
 		{
 			fastCts.Cancel();
-		}
-
-		private async void buttonLedStart_Click(object sender, EventArgs e)
-		{
-			buttonLedStart.Enabled = false;
-			buttonLedStop.Enabled = true;
-			try
-			{
-				ledCts = new CancellationTokenSource();
-				var ct = ledCts.Token;
-				await Task.Run(async () =>
-				{
-					while (!ct.IsCancellationRequested)
-					{
-						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_HIGH);
-						await Task.Delay(500, ct);
-						pigpiodIf.gpio_write(GPIO, PigpiodIf.PI_LOW);
-						await Task.Delay(500, ct);
-					}
-				}, ct);
-			}
-			catch (OperationCanceledException)
-			{
-				// nothing to do
-			}
-			finally
-			{
-				buttonLedStart.Enabled = true;
-				buttonLedStop.Enabled = false;
-			}
-		}
-
-		private void buttonLedStop_Click(object sender, EventArgs e)
-		{
-			ledCts.Cancel();
-		}
-
-		private void trackBarServo1_Scroll(object sender, EventArgs e)
-		{
-			if (checkBoxServo1.Checked)
-			{
-				pigpiodIf.set_servo_pulsewidth(SERVO_1, (UInt32)trackBarServo1.Value);
-			}
-			else
-			{
-				checkBoxServo1.Checked = true;
-			}
-		}
-
-		private void trackBarServo2_Scroll(object sender, EventArgs e)
-		{
-			if (checkBoxServo2.Checked)
-			{
-				pigpiodIf.set_servo_pulsewidth(SERVO_2, (UInt32)trackBarServo2.Value);
-			}
-			else
-			{
-				checkBoxServo2.Checked = true;
-			}
-		}
-
-		private void checkBoxServo1_CheckedChanged(object sender, EventArgs e)
-		{
-			if (checkBoxServo1.Checked)
-			{
-				pigpiodIf.set_servo_pulsewidth(SERVO_1, (UInt32)trackBarServo1.Value);
-			}
-			else
-			{
-				pigpiodIf.set_servo_pulsewidth(SERVO_1, 0);
-			}
-		}
-
-		private void checkBoxServo2_CheckedChanged(object sender, EventArgs e)
-		{
-			if (checkBoxServo2.Checked)
-			{
-				pigpiodIf.set_servo_pulsewidth(SERVO_2, (UInt32)trackBarServo2.Value);
-			}
-			else
-			{
-				pigpiodIf.set_servo_pulsewidth(SERVO_2, 0);
-			}
 		}
 	}
 }
