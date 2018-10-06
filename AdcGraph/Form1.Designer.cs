@@ -120,7 +120,7 @@
 			this.checkBoxServo2.Location = new System.Drawing.Point(12, 177);
 			this.checkBoxServo2.Name = "checkBoxServo2";
 			this.checkBoxServo2.Size = new System.Drawing.Size(15, 14);
-			this.checkBoxServo2.TabIndex = 12;
+			this.checkBoxServo2.TabIndex = 8;
 			this.checkBoxServo2.UseVisualStyleBackColor = true;
 			this.checkBoxServo2.CheckedChanged += new System.EventHandler(this.checkBoxServo2_CheckedChanged);
 			// 
@@ -130,7 +130,7 @@
 			this.checkBoxServo1.Location = new System.Drawing.Point(12, 143);
 			this.checkBoxServo1.Name = "checkBoxServo1";
 			this.checkBoxServo1.Size = new System.Drawing.Size(15, 14);
-			this.checkBoxServo1.TabIndex = 10;
+			this.checkBoxServo1.TabIndex = 6;
 			this.checkBoxServo1.UseVisualStyleBackColor = true;
 			this.checkBoxServo1.CheckedChanged += new System.EventHandler(this.checkBoxServo1_CheckedChanged);
 			// 
@@ -139,7 +139,7 @@
 			this.buttonFastStop.Location = new System.Drawing.Point(83, 255);
 			this.buttonFastStop.Name = "buttonFastStop";
 			this.buttonFastStop.Size = new System.Drawing.Size(65, 41);
-			this.buttonFastStop.TabIndex = 7;
+			this.buttonFastStop.TabIndex = 13;
 			this.buttonFastStop.Text = "Fast Stop";
 			this.buttonFastStop.UseVisualStyleBackColor = true;
 			this.buttonFastStop.Click += new System.EventHandler(this.buttonFastStop_Click);
@@ -149,7 +149,7 @@
 			this.buttonFastStart.Location = new System.Drawing.Point(12, 255);
 			this.buttonFastStart.Name = "buttonFastStart";
 			this.buttonFastStart.Size = new System.Drawing.Size(65, 41);
-			this.buttonFastStart.TabIndex = 6;
+			this.buttonFastStart.TabIndex = 12;
 			this.buttonFastStart.Text = "Fast Start";
 			this.buttonFastStart.UseVisualStyleBackColor = true;
 			this.buttonFastStart.Click += new System.EventHandler(this.buttonFastStart_Click);
@@ -164,7 +164,7 @@
 			this.trackBarServo2.Name = "trackBarServo2";
 			this.trackBarServo2.Size = new System.Drawing.Size(112, 28);
 			this.trackBarServo2.SmallChange = 50;
-			this.trackBarServo2.TabIndex = 13;
+			this.trackBarServo2.TabIndex = 9;
 			this.trackBarServo2.TickFrequency = 500;
 			this.trackBarServo2.Value = 1500;
 			this.trackBarServo2.Scroll += new System.EventHandler(this.trackBarServo2_Scroll);
@@ -179,7 +179,7 @@
 			this.trackBarServo1.Name = "trackBarServo1";
 			this.trackBarServo1.Size = new System.Drawing.Size(112, 28);
 			this.trackBarServo1.SmallChange = 50;
-			this.trackBarServo1.TabIndex = 11;
+			this.trackBarServo1.TabIndex = 7;
 			this.trackBarServo1.TickFrequency = 500;
 			this.trackBarServo1.Value = 1500;
 			this.trackBarServo1.Scroll += new System.EventHandler(this.trackBarServo1_Scroll);
@@ -189,7 +189,7 @@
 			this.buttonLedStop.Location = new System.Drawing.Point(83, 93);
 			this.buttonLedStop.Name = "buttonLedStop";
 			this.buttonLedStop.Size = new System.Drawing.Size(65, 41);
-			this.buttonLedStop.TabIndex = 9;
+			this.buttonLedStop.TabIndex = 5;
 			this.buttonLedStop.Text = "LED Stop";
 			this.buttonLedStop.UseVisualStyleBackColor = true;
 			this.buttonLedStop.Click += new System.EventHandler(this.buttonLedStop_Click);
@@ -199,7 +199,7 @@
 			this.buttonLedStart.Location = new System.Drawing.Point(12, 93);
 			this.buttonLedStart.Name = "buttonLedStart";
 			this.buttonLedStart.Size = new System.Drawing.Size(65, 41);
-			this.buttonLedStart.TabIndex = 8;
+			this.buttonLedStart.TabIndex = 4;
 			this.buttonLedStart.Text = "LED Start";
 			this.buttonLedStart.UseVisualStyleBackColor = true;
 			this.buttonLedStart.Click += new System.EventHandler(this.buttonLedStart_Click);
@@ -209,7 +209,7 @@
 			this.buttonRollStop.Location = new System.Drawing.Point(83, 208);
 			this.buttonRollStop.Name = "buttonRollStop";
 			this.buttonRollStop.Size = new System.Drawing.Size(65, 41);
-			this.buttonRollStop.TabIndex = 5;
+			this.buttonRollStop.TabIndex = 11;
 			this.buttonRollStop.Text = "Roll Stop";
 			this.buttonRollStop.UseVisualStyleBackColor = true;
 			this.buttonRollStop.Click += new System.EventHandler(this.buttonRollStop_Click);
@@ -219,7 +219,7 @@
 			this.buttonRollStart.Location = new System.Drawing.Point(12, 208);
 			this.buttonRollStart.Name = "buttonRollStart";
 			this.buttonRollStart.Size = new System.Drawing.Size(65, 41);
-			this.buttonRollStart.TabIndex = 4;
+			this.buttonRollStart.TabIndex = 10;
 			this.buttonRollStart.Text = "Roll Start";
 			this.buttonRollStart.UseVisualStyleBackColor = true;
 			this.buttonRollStart.Click += new System.EventHandler(this.buttonRollStart_Click);
