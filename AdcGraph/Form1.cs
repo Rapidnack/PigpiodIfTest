@@ -52,6 +52,17 @@ namespace AdcGraph
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			pigpiodIf = new PigpiodIf();
+			pigpiodIf.StreamChanged += (s, evt) =>
+			{
+				if (pigpiodIf.CommandStream != null && pigpiodIf.NotifyStream != null)
+				{
+					Invoke(new Action(() =>
+					{
+						checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
+						checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
+					}));
+				}
+			};
 
 			rollPlotModel = new PlotModel();
 			rollSeries = new LineSeries[NUM_ROLL_CHANNELS];
@@ -85,17 +96,6 @@ namespace AdcGraph
 
 		private void buttonOpen_Click(object sender, EventArgs e)
 		{
-			pigpiodIf.StreamChanged += (s, evt) =>
-			{
-				if (pigpiodIf.CommandStream != null && pigpiodIf.NotifyStream != null)
-				{
-					Invoke(new Action(() =>
-					{
-						checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
-						checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
-					}));
-				}
-			};
 			pigpiodIf.pigpio_start(textBoxAddress.Text, "8888");
 
 			buttonOpen.Enabled = false;
