@@ -89,9 +89,9 @@ namespace AdcGraph
 			);
 
 			buttonClose.Enabled = false;
+			buttonLedStop.Enabled = false;
 			buttonRollStop.Enabled = false;
 			buttonFastStop.Enabled = false;
-			buttonLedStop.Enabled = false;
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)
