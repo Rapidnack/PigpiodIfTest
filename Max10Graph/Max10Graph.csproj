@@ -83,16 +83,19 @@
     <None Include="FPGA\MAX1000\output_files\top.sof" />
     <None Include="FPGA\MAX1000\pll.v" />
     <None Include="FPGA\MAX1000\ram2_32x512.v" />
+    <None Include="FPGA\MAX1000\top.qsf" />
     <None Include="FPGA\MAX1000\top.v" />
     <None Include="FPGA\MAX1000_Basic\MyBasicStorage.v" />
     <None Include="FPGA\MAX1000_Basic\output_files\top.pof" />
     <None Include="FPGA\MAX1000_Basic\output_files\top.sof" />
     <None Include="FPGA\MAX1000_Basic\pll.v" />
     <None Include="FPGA\MAX1000_Basic\ram2_32x512.v" />
+    <None Include="FPGA\MAX1000_Basic\top.qsf" />
     <None Include="FPGA\MAX1000_Basic\top.v" />
     <None Include="FPGA\MAX1000_Spi\output_files\top.pof" />
     <None Include="FPGA\MAX1000_Spi\output_files\top.sof" />
     <None Include="FPGA\MAX1000_Spi\pll.v" />
+    <None Include="FPGA\MAX1000_Spi\top.qsf" />
     <None Include="FPGA\MAX1000_Spi\top.v" />
     <None Include="FPGA\MAX1000_Triggered\MyBasicStorage.v" />
     <None Include="FPGA\MAX1000_Triggered\MyBasicStorage_hw.tcl" />
@@ -102,6 +105,7 @@
     <None Include="FPGA\MAX1000_Triggered\output_files\top.sof" />
     <None Include="FPGA\MAX1000_Triggered\pll.v" />
     <None Include="FPGA\MAX1000_Triggered\ram2_32x512.v" />
+    <None Include="FPGA\MAX1000_Triggered\top.qsf" />
     <None Include="FPGA\MAX1000_Triggered\top.v" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
