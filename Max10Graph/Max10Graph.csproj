@@ -73,6 +73,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="FPGA\MAX1000\MyAdcAdapter.v" />
+    <None Include="FPGA\MAX1000\MyAdcAdapter_hw.tcl" />
+    <None Include="FPGA\MAX1000\MyBasicStorage.v" />
+    <None Include="FPGA\MAX1000\MyBasicStorage_hw.tcl" />
+    <None Include="FPGA\MAX1000\MyTriggeredStorage.v" />
+    <None Include="FPGA\MAX1000\MyTriggeredStorage_hw.tcl" />
+    <None Include="FPGA\MAX1000\pll.v" />
+    <None Include="FPGA\MAX1000\ram2_32x512.v" />
+    <None Include="FPGA\MAX1000\top.v" />
+    <None Include="FPGA\MAX1000_Basic\MyBasicStorage.v" />
+    <None Include="FPGA\MAX1000_Basic\pll.v" />
+    <None Include="FPGA\MAX1000_Basic\ram2_32x512.v" />
+    <None Include="FPGA\MAX1000_Basic\top.v" />
+    <None Include="FPGA\MAX1000_Spi\pll.v" />
+    <None Include="FPGA\MAX1000_Spi\top.v" />
+    <None Include="FPGA\MAX1000_Triggered\MyBasicStorage.v" />
+    <None Include="FPGA\MAX1000_Triggered\MyBasicStorage_hw.tcl" />
+    <None Include="FPGA\MAX1000_Triggered\MyTriggeredStorage.v" />
+    <None Include="FPGA\MAX1000_Triggered\MyTriggeredStorage_hw.tcl" />
+    <None Include="FPGA\MAX1000_Triggered\pll.v" />
+    <None Include="FPGA\MAX1000_Triggered\ram2_32x512.v" />
+    <None Include="FPGA\MAX1000_Triggered\top.v" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -97,6 +119,7 @@
       <Name>Rapidnack.Net</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
