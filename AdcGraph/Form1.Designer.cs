@@ -48,12 +48,14 @@
 			this.loggingTextBox1 = new Rapidnack.Common.LoggingTextBox();
 			this.tabPageGraph = new System.Windows.Forms.TabPage();
 			this.plotView1 = new OxyPlot.WindowsForms.PlotView();
+			this.panelOperation = new System.Windows.Forms.Panel();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo1)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPageLog.SuspendLayout();
 			this.tabPageGraph.SuspendLayout();
+			this.panelOperation.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBoxAddress
@@ -94,16 +96,7 @@
 			// 
 			// panel1
 			// 
-			this.panel1.Controls.Add(this.checkBoxServo2);
-			this.panel1.Controls.Add(this.checkBoxServo1);
-			this.panel1.Controls.Add(this.buttonFastStop);
-			this.panel1.Controls.Add(this.buttonFastStart);
-			this.panel1.Controls.Add(this.trackBarServo2);
-			this.panel1.Controls.Add(this.trackBarServo1);
-			this.panel1.Controls.Add(this.buttonLedStop);
-			this.panel1.Controls.Add(this.buttonLedStart);
-			this.panel1.Controls.Add(this.buttonRollStop);
-			this.panel1.Controls.Add(this.buttonRollStart);
+			this.panel1.Controls.Add(this.panelOperation);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.buttonOpen);
 			this.panel1.Controls.Add(this.buttonClose);
@@ -117,7 +110,7 @@
 			// checkBoxServo2
 			// 
 			this.checkBoxServo2.AutoSize = true;
-			this.checkBoxServo2.Location = new System.Drawing.Point(12, 177);
+			this.checkBoxServo2.Location = new System.Drawing.Point(12, 87);
 			this.checkBoxServo2.Name = "checkBoxServo2";
 			this.checkBoxServo2.Size = new System.Drawing.Size(15, 14);
 			this.checkBoxServo2.TabIndex = 8;
@@ -127,7 +120,7 @@
 			// checkBoxServo1
 			// 
 			this.checkBoxServo1.AutoSize = true;
-			this.checkBoxServo1.Location = new System.Drawing.Point(12, 143);
+			this.checkBoxServo1.Location = new System.Drawing.Point(12, 53);
 			this.checkBoxServo1.Name = "checkBoxServo1";
 			this.checkBoxServo1.Size = new System.Drawing.Size(15, 14);
 			this.checkBoxServo1.TabIndex = 6;
@@ -136,7 +129,7 @@
 			// 
 			// buttonFastStop
 			// 
-			this.buttonFastStop.Location = new System.Drawing.Point(83, 255);
+			this.buttonFastStop.Location = new System.Drawing.Point(83, 165);
 			this.buttonFastStop.Name = "buttonFastStop";
 			this.buttonFastStop.Size = new System.Drawing.Size(65, 41);
 			this.buttonFastStop.TabIndex = 13;
@@ -146,7 +139,7 @@
 			// 
 			// buttonFastStart
 			// 
-			this.buttonFastStart.Location = new System.Drawing.Point(12, 255);
+			this.buttonFastStart.Location = new System.Drawing.Point(12, 165);
 			this.buttonFastStart.Name = "buttonFastStart";
 			this.buttonFastStart.Size = new System.Drawing.Size(65, 41);
 			this.buttonFastStart.TabIndex = 12;
@@ -158,7 +151,7 @@
 			// 
 			this.trackBarServo2.AutoSize = false;
 			this.trackBarServo2.LargeChange = 200;
-			this.trackBarServo2.Location = new System.Drawing.Point(36, 174);
+			this.trackBarServo2.Location = new System.Drawing.Point(36, 84);
 			this.trackBarServo2.Maximum = 2500;
 			this.trackBarServo2.Minimum = 500;
 			this.trackBarServo2.Name = "trackBarServo2";
@@ -173,7 +166,7 @@
 			// 
 			this.trackBarServo1.AutoSize = false;
 			this.trackBarServo1.LargeChange = 200;
-			this.trackBarServo1.Location = new System.Drawing.Point(36, 140);
+			this.trackBarServo1.Location = new System.Drawing.Point(36, 50);
 			this.trackBarServo1.Maximum = 2500;
 			this.trackBarServo1.Minimum = 500;
 			this.trackBarServo1.Name = "trackBarServo1";
@@ -186,7 +179,7 @@
 			// 
 			// buttonLedStop
 			// 
-			this.buttonLedStop.Location = new System.Drawing.Point(83, 93);
+			this.buttonLedStop.Location = new System.Drawing.Point(83, 3);
 			this.buttonLedStop.Name = "buttonLedStop";
 			this.buttonLedStop.Size = new System.Drawing.Size(65, 41);
 			this.buttonLedStop.TabIndex = 5;
@@ -196,7 +189,7 @@
 			// 
 			// buttonLedStart
 			// 
-			this.buttonLedStart.Location = new System.Drawing.Point(12, 93);
+			this.buttonLedStart.Location = new System.Drawing.Point(12, 3);
 			this.buttonLedStart.Name = "buttonLedStart";
 			this.buttonLedStart.Size = new System.Drawing.Size(65, 41);
 			this.buttonLedStart.TabIndex = 4;
@@ -206,7 +199,7 @@
 			// 
 			// buttonRollStop
 			// 
-			this.buttonRollStop.Location = new System.Drawing.Point(83, 208);
+			this.buttonRollStop.Location = new System.Drawing.Point(83, 118);
 			this.buttonRollStop.Name = "buttonRollStop";
 			this.buttonRollStop.Size = new System.Drawing.Size(65, 41);
 			this.buttonRollStop.TabIndex = 11;
@@ -216,7 +209,7 @@
 			// 
 			// buttonRollStart
 			// 
-			this.buttonRollStart.Location = new System.Drawing.Point(12, 208);
+			this.buttonRollStart.Location = new System.Drawing.Point(12, 118);
 			this.buttonRollStart.Name = "buttonRollStart";
 			this.buttonRollStart.Size = new System.Drawing.Size(65, 41);
 			this.buttonRollStart.TabIndex = 10;
@@ -281,6 +274,25 @@
 			this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
 			this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
 			// 
+			// panelOperation
+			// 
+			this.panelOperation.Controls.Add(this.buttonLedStart);
+			this.panelOperation.Controls.Add(this.checkBoxServo2);
+			this.panelOperation.Controls.Add(this.buttonRollStart);
+			this.panelOperation.Controls.Add(this.checkBoxServo1);
+			this.panelOperation.Controls.Add(this.buttonRollStop);
+			this.panelOperation.Controls.Add(this.buttonFastStop);
+			this.panelOperation.Controls.Add(this.buttonLedStop);
+			this.panelOperation.Controls.Add(this.buttonFastStart);
+			this.panelOperation.Controls.Add(this.trackBarServo1);
+			this.panelOperation.Controls.Add(this.trackBarServo2);
+			this.panelOperation.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panelOperation.Location = new System.Drawing.Point(0, 90);
+			this.panelOperation.Margin = new System.Windows.Forms.Padding(0);
+			this.panelOperation.Name = "panelOperation";
+			this.panelOperation.Size = new System.Drawing.Size(160, 230);
+			this.panelOperation.TabIndex = 14;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -292,6 +304,7 @@
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Form1";
 			this.Text = "ADC Graph";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
@@ -301,6 +314,8 @@
 			this.tabPageLog.ResumeLayout(false);
 			this.tabPageLog.PerformLayout();
 			this.tabPageGraph.ResumeLayout(false);
+			this.panelOperation.ResumeLayout(false);
+			this.panelOperation.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -326,6 +341,7 @@
 		private System.Windows.Forms.CheckBox checkBoxServo2;
 		private System.Windows.Forms.CheckBox checkBoxServo1;
 		private Rapidnack.Common.LoggingTextBox loggingTextBox1;
+		private System.Windows.Forms.Panel panelOperation;
 	}
 }
 

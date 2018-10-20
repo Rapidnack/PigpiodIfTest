@@ -49,6 +49,40 @@ namespace AdcGraph
 			InitializeComponent();
 		}
 
+		private void CloseConnection()
+		{
+			if (ledCts != null)
+			{
+				ledCts.Cancel();
+				while (ledCts != null)
+				{
+					Application.DoEvents();
+				}
+			}
+			if (rollCts != null)
+			{
+				rollCts.Cancel();
+				while (rollCts != null)
+				{
+					Application.DoEvents();
+				}
+			}
+			if (fastCts != null)
+			{
+				fastCts.Cancel();
+				while (fastCts != null)
+				{
+					Application.DoEvents();
+				}
+			}
+
+			pigpiodIf.pigpio_stop();
+
+			panelOperation.Enabled = false;
+			buttonOpen.Enabled = true;
+			buttonClose.Enabled = false;
+		}
+
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			pigpiodIf = new PigpiodIf();
@@ -58,6 +92,8 @@ namespace AdcGraph
 				{
 					Invoke(new Action(() =>
 					{
+						panelOperation.Enabled = true;
+
 						checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
 						checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
 					}));
@@ -88,10 +124,16 @@ namespace AdcGraph
 				new LinearAxis() { Position = AxisPosition.Left, Minimum = 0 - 0.1, Maximum = 3.3 + 0.1 }
 			);
 
+			panelOperation.Enabled = false;
 			buttonClose.Enabled = false;
 			buttonLedStop.Enabled = false;
 			buttonRollStop.Enabled = false;
 			buttonFastStop.Enabled = false;
+		}
+
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			CloseConnection();
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)
@@ -104,10 +146,7 @@ namespace AdcGraph
 
 		private void buttonClose_Click(object sender, EventArgs e)
 		{
-			pigpiodIf.pigpio_stop();
-
-			buttonOpen.Enabled = true;
-			buttonClose.Enabled = false;
+			CloseConnection();
 		}
 
 		private async void buttonLedStart_Click(object sender, EventArgs e)
@@ -135,6 +174,8 @@ namespace AdcGraph
 			}
 			finally
 			{
+				ledCts = null;
+
 				buttonLedStart.Enabled = true;
 				buttonLedStop.Enabled = false;
 			}
@@ -278,6 +319,8 @@ namespace AdcGraph
 				{
 					pigpiodIf.spi_close((UInt32)h);
 				}
+
+				rollCts = null;
 
 				buttonRollStart.Enabled = true;
 				buttonFastStart.Enabled = true;
@@ -433,6 +476,8 @@ namespace AdcGraph
 				{
 					pigpiodIf.spi_close((UInt32)h);
 				}
+
+				fastCts = null;
 
 				buttonRollStart.Enabled = true;
 				buttonFastStart.Enabled = true;

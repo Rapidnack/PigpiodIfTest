@@ -25,16 +25,23 @@ namespace Rapidnack.Common
 			Console.SetError(logWriter);
 			logWriter.TextChanged += (s, evt) =>
 			{
-				Invoke(new Action(() =>
+				try
 				{
-					int limit = Limit;
-					if (Text.Length + evt.Length > limit * 2)
+					Invoke(new Action(() =>
 					{
-						Select(0, Math.Min(Text.Length, Text.Length + evt.Length - limit));
-						SelectedText = string.Empty;
-					}
-					AppendText(evt);
-				}));
+						int limit = Limit;
+						if (Text.Length + evt.Length > limit * 2)
+						{
+							Select(0, Math.Min(Text.Length, Text.Length + evt.Length - limit));
+							SelectedText = string.Empty;
+						}
+						AppendText(evt);
+					}));
+				}
+				catch (InvalidOperationException)
+				{
+					// nothing to do
+				}
 			};
 		}
 	}
