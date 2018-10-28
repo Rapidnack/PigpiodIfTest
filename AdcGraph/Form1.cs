@@ -264,12 +264,12 @@ namespace AdcGraph
 						DataPoint[] dataPoints = new DataPoint[NUM_ROLL_CHANNELS];
 						for (int ch = 0; ch < NUM_ROLL_CHANNELS; ch++)
 						{
-							byte[] buf = new byte[] { 0x01, (byte)(0x80 + (ch << 4)), 0x00 };
+							byte[] buf = new byte[] { (byte)(0x06 + (ch >> 2)), (byte)(ch << 6), 0x00 };
 							int b = pigpiodIf.spi_xfer((UInt32)h, buf, buf);
 							if (b == 3)
 							{
 								TimeSpan ts = DateTime.Now - start;
-								double volt = 3.3 * (((buf[1] & 0x0f) * 256) + buf[2]) / 1024.0;
+								double volt = 3.3 * (((buf[1] & 0x0f) * 256) + buf[2]) / 4096.0;
 								volts[ch] = volt;
 								dataPoints[ch] = new DataPoint(ts.TotalSeconds, volt);
 							}
@@ -371,12 +371,12 @@ namespace AdcGraph
 							double[] volts = new double[NUM_FAST_CHANNELS];
 							for (int ch = 0; ch < NUM_FAST_CHANNELS; ch++)
 							{
-								byte[] buf = new byte[] { 0x01, (byte)(0x80 + (ch << 4)), 0x00 };
+								byte[] buf = new byte[] { (byte)(0x06 + (ch >> 2)), (byte)(ch << 6), 0x00 };
 								int b = pigpiodIf.spi_xfer((UInt32)h, buf, buf);
 								if (b == 3)
 								{
 									TimeSpan ts = DateTime.Now - start;
-									volts[ch] = 3.3 * (((buf[1] & 0x0f) * 256) + buf[2]) / 1024.0;
+									volts[ch] = 3.3 * (((buf[1] & 0x0f) * 256) + buf[2]) / 4096.0;
 									if (EState.Arming < state && state < EState.Triggered)
 									{
 										dataPoints[ch].RemoveAt(0);
