@@ -77,27 +77,20 @@ namespace AdcGraph
 			}
 
 			pigpiodIf.pigpio_stop();
-
-			panelOperation.Enabled = false;
-			buttonOpen.Enabled = true;
-			buttonClose.Enabled = false;
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			pigpiodIf = new PigpiodIf();
-			pigpiodIf.StreamChanged += (s, evt) =>
+			pigpiodIf.StreamConnected += (s, evt) =>
 			{
-				if (pigpiodIf.CommandStream != null && pigpiodIf.NotifyStream != null)
+				Invoke(new Action(() =>
 				{
-					Invoke(new Action(() =>
-					{
-						panelOperation.Enabled = true;
+					panelOperation.Enabled = true;
 
-						checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
-						checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
-					}));
-				}
+					checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
+					checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
+				}));
 			};
 
 			rollPlotModel = new PlotModel();
@@ -147,6 +140,10 @@ namespace AdcGraph
 		private void buttonClose_Click(object sender, EventArgs e)
 		{
 			CloseConnection();
+
+			panelOperation.Enabled = false;
+			buttonOpen.Enabled = true;
+			buttonClose.Enabled = false;
 		}
 
 		private async void buttonLedStart_Click(object sender, EventArgs e)

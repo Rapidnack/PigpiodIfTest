@@ -79,6 +79,7 @@ namespace Rapidnack.Net
 		public event EventHandler CommandStreamChanged;
 		public event EventHandler NotifyStreamChanged;
 		public event EventHandler StreamChanged;
+		public event EventHandler StreamConnected;
 
 		#endregion
 
@@ -769,6 +770,8 @@ namespace Rapidnack.Net
 
 		#region # private field
 
+		private bool isConnecting = false;
+
 		private int gPigHandle;
 		private UInt32 gLastLevel;
 		private UInt32 gNotifyBits;
@@ -969,6 +972,15 @@ namespace Rapidnack.Net
 				{
 					StreamChanged.Invoke(this, new EventArgs());
 				}
+
+				if (CommandStream != null && NotifyStream != null && !isConnecting)
+				{
+					isConnecting = true;
+					if (StreamConnected != null)
+					{
+						StreamConnected.Invoke(this, new EventArgs());
+					}
+				}
 			}
 		}
 
@@ -990,6 +1002,15 @@ namespace Rapidnack.Net
 				if (StreamChanged != null)
 				{
 					StreamChanged.Invoke(this, new EventArgs());
+				}
+
+				if (CommandStream != null && NotifyStream != null && !isConnecting)
+				{
+					isConnecting = true;
+					if (StreamConnected != null)
+					{
+						StreamConnected.Invoke(this, new EventArgs());
+					}
 				}
 			}
 		}
@@ -1044,6 +1065,8 @@ namespace Rapidnack.Net
 
 				if (NotifyTcpConnection.Stream != null)
 				{
+					NotifyStream.ReadTimeout = Timeout.Infinite;
+
 					gPigHandle = pigpio_notify();
 
 					if (gPigHandle >= 0)
@@ -1197,6 +1220,7 @@ namespace Rapidnack.Net
 				return (int)EError.pigif_bad_getaddrinfo;
 			}
 
+			isConnecting = false;
 			this.TcpConnection.Open(addrStr, port);
 			NotifyTcpConnection.Open(addrStr, port);
 
@@ -2147,6 +2171,24 @@ namespace Rapidnack.Net
 
 		public int serial_data_available(UInt32 handle)
 		{ return pigpio_command(PI_CMD_SERDA, (int)handle, 0); }
+
+		int custom_1(UInt32 arg1, UInt32 arg2, string argx, byte[] retBuf)
+		{
+			GpioExtent[] exts = new GpioExtent[] { new GpioExtent() };
+
+			/*
+			p1=arg1
+			p2=arg2
+			p3=count
+			## extension ##
+			char argx[count]
+			*/
+
+			exts[0].Contents = System.Text.Encoding.UTF8.GetBytes(argx);
+
+			return pigpio_command_ext
+				(PI_CMD_CF2, (int)arg1, (int)arg2, exts);
+		}
 
 		int custom_2(UInt32 arg1, string argx, byte[] retBuf)
 		{

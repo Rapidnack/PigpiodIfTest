@@ -144,7 +144,10 @@ namespace Rapidnack.Net
 					((System.Net.IPEndPoint)tcp.Client.RemoteEndPoint).Address,
 					((System.Net.IPEndPoint)tcp.Client.RemoteEndPoint).Port);
 
-				Stream = tcp.GetStream();
+				var stream = tcp.GetStream();
+				stream.ReadTimeout = 10000;
+				stream.WriteTimeout = 10000;
+				Stream = stream;
 			}
 		}
 

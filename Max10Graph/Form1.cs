@@ -57,38 +57,31 @@ namespace Max10Graph
 			}
 
 			pigpiodIf.pigpio_stop();
-
-			panelOperation.Enabled = false;
-			buttonOpen.Enabled = true;
-			buttonClose.Enabled = false;
 		}
 
 		private void Form1_Load(object sender, System.EventArgs e)
 		{
 			pigpiodIf = new PigpiodIf();
-			pigpiodIf.StreamChanged += (s, evt) =>
+			pigpiodIf.StreamConnected += (s, evt) =>
 			{
-				if (pigpiodIf.CommandStream != null && pigpiodIf.NotifyStream != null)
+				Invoke(new Action(() =>
 				{
-					Invoke(new Action(() =>
-					{
-						panelOperation.Enabled = true;
+					panelOperation.Enabled = true;
 
-						checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
-						checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
-					}));
+					checkBoxServo1_CheckedChanged(checkBoxServo1, new EventArgs());
+					checkBoxServo2_CheckedChanged(checkBoxServo2, new EventArgs());
+				}));
 
-					try
-					{
-						// CS2, 20MHz, Auxiliary SPI + Mode1
-						avalonMM.Stream = new SpiStream(pigpiodIf, 2, 20 * 1000000, 256 + 1);
+				try
+				{
+					// CS2, 20MHz, Auxiliary SPI + Mode1
+					avalonMM.Stream = new SpiStream(pigpiodIf, 2, 20 * 1000000, 256 + 1);
 
-						avalonMM.WriteUInt32Packet(0x10, 1); // Start sequencer
-					}
-					catch (PigpiodIfException ex)
-					{
-						Console.WriteLine(ex.Message);
-					}
+					avalonMM.WriteUInt32Packet(0x10, 1); // Start sequencer
+				}
+				catch (PigpiodIfException ex)
+				{
+					Console.WriteLine(ex.Message);
 				}
 			};
 
@@ -136,6 +129,10 @@ namespace Max10Graph
 		private void buttonClose_Click(object sender, System.EventArgs e)
 		{
 			CloseConnection();
+
+			panelOperation.Enabled = false;
+			buttonOpen.Enabled = true;
+			buttonClose.Enabled = false;
 		}
 
 		private async void buttonStart_Click(object sender, EventArgs e)
@@ -247,6 +244,11 @@ namespace Max10Graph
 				}
 				finally
 				{
+					if (callback != null)
+					{
+						pigpiodIf.callback_cancel(callback);
+					}
+
 					cts = null;
 
 					buttonStart.Enabled = true;
