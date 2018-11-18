@@ -79,6 +79,9 @@
 			// 
 			// panelOperation
 			// 
+			this.panelOperation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.panelOperation.Controls.Add(this.trackBarLevel);
 			this.panelOperation.Controls.Add(this.comboBoxPol);
 			this.panelOperation.Controls.Add(this.comboBoxSource);
@@ -94,7 +97,6 @@
 			this.panelOperation.Controls.Add(this.label1);
 			this.panelOperation.Controls.Add(this.label3);
 			this.panelOperation.Controls.Add(this.label2);
-			this.panelOperation.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.panelOperation.Location = new System.Drawing.Point(0, 74);
 			this.panelOperation.Margin = new System.Windows.Forms.Padding(0);
 			this.panelOperation.Name = "panelOperation";
@@ -333,10 +335,10 @@
 			// tabPageGraph
 			// 
 			this.tabPageGraph.Controls.Add(this.plotView1);
-			this.tabPageGraph.Location = new System.Drawing.Point(4, 26);
+			this.tabPageGraph.Location = new System.Drawing.Point(4, 22);
 			this.tabPageGraph.Name = "tabPageGraph";
 			this.tabPageGraph.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPageGraph.Size = new System.Drawing.Size(312, 290);
+			this.tabPageGraph.Size = new System.Drawing.Size(312, 294);
 			this.tabPageGraph.TabIndex = 1;
 			this.tabPageGraph.Text = "Graph";
 			this.tabPageGraph.UseVisualStyleBackColor = true;
@@ -348,7 +350,7 @@
 			this.plotView1.Location = new System.Drawing.Point(3, 3);
 			this.plotView1.Name = "plotView1";
 			this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-			this.plotView1.Size = new System.Drawing.Size(306, 284);
+			this.plotView1.Size = new System.Drawing.Size(306, 288);
 			this.plotView1.TabIndex = 0;
 			this.plotView1.Text = "plotView1";
 			this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
@@ -362,7 +364,7 @@
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Form1";
 			this.Text = "MAX 10 Graph";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

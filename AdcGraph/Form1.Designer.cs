@@ -33,29 +33,29 @@
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.checkBoxServo2 = new System.Windows.Forms.CheckBox();
-			this.checkBoxServo1 = new System.Windows.Forms.CheckBox();
-			this.buttonFastStop = new System.Windows.Forms.Button();
-			this.buttonFastStart = new System.Windows.Forms.Button();
-			this.trackBarServo2 = new System.Windows.Forms.TrackBar();
-			this.trackBarServo1 = new System.Windows.Forms.TrackBar();
-			this.buttonLedStop = new System.Windows.Forms.Button();
+			this.panelOperation = new System.Windows.Forms.Panel();
 			this.buttonLedStart = new System.Windows.Forms.Button();
-			this.buttonRollStop = new System.Windows.Forms.Button();
+			this.checkBoxServo2 = new System.Windows.Forms.CheckBox();
 			this.buttonRollStart = new System.Windows.Forms.Button();
+			this.checkBoxServo1 = new System.Windows.Forms.CheckBox();
+			this.buttonRollStop = new System.Windows.Forms.Button();
+			this.buttonFastStop = new System.Windows.Forms.Button();
+			this.buttonLedStop = new System.Windows.Forms.Button();
+			this.buttonFastStart = new System.Windows.Forms.Button();
+			this.trackBarServo1 = new System.Windows.Forms.TrackBar();
+			this.trackBarServo2 = new System.Windows.Forms.TrackBar();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPageLog = new System.Windows.Forms.TabPage();
 			this.loggingTextBox1 = new Rapidnack.Common.LoggingTextBox();
 			this.tabPageGraph = new System.Windows.Forms.TabPage();
 			this.plotView1 = new OxyPlot.WindowsForms.PlotView();
-			this.panelOperation = new System.Windows.Forms.Panel();
 			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).BeginInit();
+			this.panelOperation.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).BeginInit();
 			this.tabControl1.SuspendLayout();
 			this.tabPageLog.SuspendLayout();
 			this.tabPageGraph.SuspendLayout();
-			this.panelOperation.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBoxAddress
@@ -107,6 +107,37 @@
 			this.panel1.Size = new System.Drawing.Size(160, 320);
 			this.panel1.TabIndex = 0;
 			// 
+			// panelOperation
+			// 
+			this.panelOperation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.panelOperation.Controls.Add(this.buttonLedStart);
+			this.panelOperation.Controls.Add(this.checkBoxServo2);
+			this.panelOperation.Controls.Add(this.buttonRollStart);
+			this.panelOperation.Controls.Add(this.checkBoxServo1);
+			this.panelOperation.Controls.Add(this.buttonRollStop);
+			this.panelOperation.Controls.Add(this.buttonFastStop);
+			this.panelOperation.Controls.Add(this.buttonLedStop);
+			this.panelOperation.Controls.Add(this.buttonFastStart);
+			this.panelOperation.Controls.Add(this.trackBarServo1);
+			this.panelOperation.Controls.Add(this.trackBarServo2);
+			this.panelOperation.Location = new System.Drawing.Point(0, 90);
+			this.panelOperation.Margin = new System.Windows.Forms.Padding(0);
+			this.panelOperation.Name = "panelOperation";
+			this.panelOperation.Size = new System.Drawing.Size(160, 230);
+			this.panelOperation.TabIndex = 14;
+			// 
+			// buttonLedStart
+			// 
+			this.buttonLedStart.Location = new System.Drawing.Point(12, 3);
+			this.buttonLedStart.Name = "buttonLedStart";
+			this.buttonLedStart.Size = new System.Drawing.Size(65, 41);
+			this.buttonLedStart.TabIndex = 4;
+			this.buttonLedStart.Text = "LED Start";
+			this.buttonLedStart.UseVisualStyleBackColor = true;
+			this.buttonLedStart.Click += new System.EventHandler(this.buttonLedStart_Click);
+			// 
 			// checkBoxServo2
 			// 
 			this.checkBoxServo2.AutoSize = true;
@@ -116,6 +147,16 @@
 			this.checkBoxServo2.TabIndex = 8;
 			this.checkBoxServo2.UseVisualStyleBackColor = true;
 			this.checkBoxServo2.CheckedChanged += new System.EventHandler(this.checkBoxServo2_CheckedChanged);
+			// 
+			// buttonRollStart
+			// 
+			this.buttonRollStart.Location = new System.Drawing.Point(12, 118);
+			this.buttonRollStart.Name = "buttonRollStart";
+			this.buttonRollStart.Size = new System.Drawing.Size(65, 41);
+			this.buttonRollStart.TabIndex = 10;
+			this.buttonRollStart.Text = "Roll Start";
+			this.buttonRollStart.UseVisualStyleBackColor = true;
+			this.buttonRollStart.Click += new System.EventHandler(this.buttonRollStart_Click);
 			// 
 			// checkBoxServo1
 			// 
@@ -127,6 +168,16 @@
 			this.checkBoxServo1.UseVisualStyleBackColor = true;
 			this.checkBoxServo1.CheckedChanged += new System.EventHandler(this.checkBoxServo1_CheckedChanged);
 			// 
+			// buttonRollStop
+			// 
+			this.buttonRollStop.Location = new System.Drawing.Point(83, 118);
+			this.buttonRollStop.Name = "buttonRollStop";
+			this.buttonRollStop.Size = new System.Drawing.Size(65, 41);
+			this.buttonRollStop.TabIndex = 11;
+			this.buttonRollStop.Text = "Roll Stop";
+			this.buttonRollStop.UseVisualStyleBackColor = true;
+			this.buttonRollStop.Click += new System.EventHandler(this.buttonRollStop_Click);
+			// 
 			// buttonFastStop
 			// 
 			this.buttonFastStop.Location = new System.Drawing.Point(83, 165);
@@ -137,6 +188,16 @@
 			this.buttonFastStop.UseVisualStyleBackColor = true;
 			this.buttonFastStop.Click += new System.EventHandler(this.buttonFastStop_Click);
 			// 
+			// buttonLedStop
+			// 
+			this.buttonLedStop.Location = new System.Drawing.Point(83, 3);
+			this.buttonLedStop.Name = "buttonLedStop";
+			this.buttonLedStop.Size = new System.Drawing.Size(65, 41);
+			this.buttonLedStop.TabIndex = 5;
+			this.buttonLedStop.Text = "LED Stop";
+			this.buttonLedStop.UseVisualStyleBackColor = true;
+			this.buttonLedStop.Click += new System.EventHandler(this.buttonLedStop_Click);
+			// 
 			// buttonFastStart
 			// 
 			this.buttonFastStart.Location = new System.Drawing.Point(12, 165);
@@ -146,21 +207,6 @@
 			this.buttonFastStart.Text = "Fast Start";
 			this.buttonFastStart.UseVisualStyleBackColor = true;
 			this.buttonFastStart.Click += new System.EventHandler(this.buttonFastStart_Click);
-			// 
-			// trackBarServo2
-			// 
-			this.trackBarServo2.AutoSize = false;
-			this.trackBarServo2.LargeChange = 200;
-			this.trackBarServo2.Location = new System.Drawing.Point(36, 84);
-			this.trackBarServo2.Maximum = 2500;
-			this.trackBarServo2.Minimum = 500;
-			this.trackBarServo2.Name = "trackBarServo2";
-			this.trackBarServo2.Size = new System.Drawing.Size(112, 28);
-			this.trackBarServo2.SmallChange = 50;
-			this.trackBarServo2.TabIndex = 9;
-			this.trackBarServo2.TickFrequency = 500;
-			this.trackBarServo2.Value = 1500;
-			this.trackBarServo2.Scroll += new System.EventHandler(this.trackBarServo2_Scroll);
 			// 
 			// trackBarServo1
 			// 
@@ -177,45 +223,20 @@
 			this.trackBarServo1.Value = 1500;
 			this.trackBarServo1.Scroll += new System.EventHandler(this.trackBarServo1_Scroll);
 			// 
-			// buttonLedStop
+			// trackBarServo2
 			// 
-			this.buttonLedStop.Location = new System.Drawing.Point(83, 3);
-			this.buttonLedStop.Name = "buttonLedStop";
-			this.buttonLedStop.Size = new System.Drawing.Size(65, 41);
-			this.buttonLedStop.TabIndex = 5;
-			this.buttonLedStop.Text = "LED Stop";
-			this.buttonLedStop.UseVisualStyleBackColor = true;
-			this.buttonLedStop.Click += new System.EventHandler(this.buttonLedStop_Click);
-			// 
-			// buttonLedStart
-			// 
-			this.buttonLedStart.Location = new System.Drawing.Point(12, 3);
-			this.buttonLedStart.Name = "buttonLedStart";
-			this.buttonLedStart.Size = new System.Drawing.Size(65, 41);
-			this.buttonLedStart.TabIndex = 4;
-			this.buttonLedStart.Text = "LED Start";
-			this.buttonLedStart.UseVisualStyleBackColor = true;
-			this.buttonLedStart.Click += new System.EventHandler(this.buttonLedStart_Click);
-			// 
-			// buttonRollStop
-			// 
-			this.buttonRollStop.Location = new System.Drawing.Point(83, 118);
-			this.buttonRollStop.Name = "buttonRollStop";
-			this.buttonRollStop.Size = new System.Drawing.Size(65, 41);
-			this.buttonRollStop.TabIndex = 11;
-			this.buttonRollStop.Text = "Roll Stop";
-			this.buttonRollStop.UseVisualStyleBackColor = true;
-			this.buttonRollStop.Click += new System.EventHandler(this.buttonRollStop_Click);
-			// 
-			// buttonRollStart
-			// 
-			this.buttonRollStart.Location = new System.Drawing.Point(12, 118);
-			this.buttonRollStart.Name = "buttonRollStart";
-			this.buttonRollStart.Size = new System.Drawing.Size(65, 41);
-			this.buttonRollStart.TabIndex = 10;
-			this.buttonRollStart.Text = "Roll Start";
-			this.buttonRollStart.UseVisualStyleBackColor = true;
-			this.buttonRollStart.Click += new System.EventHandler(this.buttonRollStart_Click);
+			this.trackBarServo2.AutoSize = false;
+			this.trackBarServo2.LargeChange = 200;
+			this.trackBarServo2.Location = new System.Drawing.Point(36, 84);
+			this.trackBarServo2.Maximum = 2500;
+			this.trackBarServo2.Minimum = 500;
+			this.trackBarServo2.Name = "trackBarServo2";
+			this.trackBarServo2.Size = new System.Drawing.Size(112, 28);
+			this.trackBarServo2.SmallChange = 50;
+			this.trackBarServo2.TabIndex = 9;
+			this.trackBarServo2.TickFrequency = 500;
+			this.trackBarServo2.Value = 1500;
+			this.trackBarServo2.Scroll += new System.EventHandler(this.trackBarServo2_Scroll);
 			// 
 			// tabControl1
 			// 
@@ -274,25 +295,6 @@
 			this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
 			this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
 			// 
-			// panelOperation
-			// 
-			this.panelOperation.Controls.Add(this.buttonLedStart);
-			this.panelOperation.Controls.Add(this.checkBoxServo2);
-			this.panelOperation.Controls.Add(this.buttonRollStart);
-			this.panelOperation.Controls.Add(this.checkBoxServo1);
-			this.panelOperation.Controls.Add(this.buttonRollStop);
-			this.panelOperation.Controls.Add(this.buttonFastStop);
-			this.panelOperation.Controls.Add(this.buttonLedStop);
-			this.panelOperation.Controls.Add(this.buttonFastStart);
-			this.panelOperation.Controls.Add(this.trackBarServo1);
-			this.panelOperation.Controls.Add(this.trackBarServo2);
-			this.panelOperation.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panelOperation.Location = new System.Drawing.Point(0, 90);
-			this.panelOperation.Margin = new System.Windows.Forms.Padding(0);
-			this.panelOperation.Name = "panelOperation";
-			this.panelOperation.Size = new System.Drawing.Size(160, 230);
-			this.panelOperation.TabIndex = 14;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -308,14 +310,14 @@
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).EndInit();
+			this.panelOperation.ResumeLayout(false);
+			this.panelOperation.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarServo1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarServo2)).EndInit();
 			this.tabControl1.ResumeLayout(false);
 			this.tabPageLog.ResumeLayout(false);
 			this.tabPageLog.PerformLayout();
 			this.tabPageGraph.ResumeLayout(false);
-			this.panelOperation.ResumeLayout(false);
-			this.panelOperation.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
