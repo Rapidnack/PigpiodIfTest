@@ -206,11 +206,11 @@ namespace Rapidnack.Net
 				byte p = packet[i];
 				if (0x7a <= p && p <= 0x7d)
 				{
-					bytes.Add(0x7d);
 					if (i == packet.Length - 1)
 					{
 						bytes.Add(0x7b);
 					}
+					bytes.Add(0x7d);
 					bytes.Add((byte)(p ^ 0x20));
 				}
 				else
